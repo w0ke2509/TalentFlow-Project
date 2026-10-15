@@ -1,0 +1,51 @@
+# Dependencies
+node_modules/
+
+# Production Builds
+dist/
+build/
+
+# Environment Variables & Secrets
+.env
+.env.local
+.env.*.local
+
+# Logs & Caches
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.vite/
+.cache/
+
+# OS & IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+
+# Backup, Restore & Snapshots (Sensitive employee data & password hashes)
+backup/
+backend/backup/
+snapshots/
+backend/snapshots/
+*.snapshot/
+*.snapshot
+*.tmp
+temp_backup*/
+talentflow_test_*/
+
+# Local database exports; keep seed JSON files in Git
+backend/data/*.rar
+backend/data/*.csv
+backend/data/backup_*/
+
+# Old report backup and generated image previews; two images below are linked from docs
+docs/BAO_CAO_DO_AN_NOSQL_BACKUP.md
+qa_docx_render/*
+!qa_docx_render/image23.png
+!qa_docx_render/image24.png
+

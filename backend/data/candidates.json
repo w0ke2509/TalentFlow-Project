@@ -1,0 +1,781 @@
+[
+  {
+    "_id": {
+      "$oid": "66dd8f303333333333333301"
+    },
+    "fullName": "Nguyễn Văn An",
+    "email": "nguyenvanan.dev@gmail.com",
+    "phone": "0909123456",
+    "gender": "male",
+    "dateOfBirth": {
+      "$date": "1998-05-15T00:00:00.000Z"
+    },
+    "skills": [
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "Redis",
+      "Docker"
+    ],
+    "experienceYears": 4,
+    "education": "Đại học Bách Khoa",
+    "address": "Quận 1, TP. Hồ Chí Minh",
+    "cvUrl": "https://cv.talentflow.local/nguyenvanan.dev.pdf",
+    "notes": "Optimize query MongoDB tốt, đã nhận việc backend",
+    "experience": [
+      {
+        "company": "FPT Software",
+        "position": "Backend Developer",
+        "startDate": {
+          "$date": "2021-03-01T00:00:00.000Z"
+        },
+        "description": "Xây REST API và tối ưu aggregation ERP",
+        "endDate": {
+          "$date": "2024-12-01T00:00:00.000Z"
+        }
+      },
+      {
+        "company": "Startup Fintech",
+        "position": "Senior Backend",
+        "startDate": {
+          "$date": "2025-01-01T00:00:00.000Z"
+        },
+        "description": "Phụ trách MongoDB sharding và Redis",
+        "endDate": {
+          "$date": "2026-08-01T00:00:00.000Z"
+        }
+      }
+    ],
+    "createdAt": {
+      "$date": "2026-08-20T00:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f303333333333333302"
+    },
+    "fullName": "Trần Thị Bích Ngọc",
+    "email": "bichngoc.frontend@gmail.com",
+    "phone": "0918765432",
+    "gender": "female",
+    "dateOfBirth": {
+      "$date": "2000-09-22T00:00:00.000Z"
+    },
+    "skills": [
+      "React",
+      "JavaScript",
+      "Tailwind CSS",
+      "TypeScript",
+      "Redux"
+    ],
+    "experienceYears": 3,
+    "education": "Đại học Khoa học Tự nhiên",
+    "address": "Bình Thạnh, TP. Hồ Chí Minh",
+    "cvUrl": "https://cv.talentflow.local/bichngoc.frontend.pdf",
+    "notes": "UI chỉn chu, đã nhận offer frontend",
+    "experience": [
+      {
+        "company": "Tiki",
+        "position": "Frontend Developer",
+        "startDate": {
+          "$date": "2023-01-01T00:00:00.000Z"
+        },
+        "description": "Xây design system và tối ưu LCP",
+        "endDate": {
+          "$date": "2026-07-01T00:00:00.000Z"
+        }
+      }
+    ],
+    "createdAt": {
+      "$date": "2026-08-20T00:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f303333333333333303"
+    },
+    "fullName": "Lê Hoàng Long",
+    "email": "longle.data@gmail.com",
+    "phone": "0987112233",
+    "gender": "male",
+    "dateOfBirth": {
+      "$date": "1997-12-10T00:00:00.000Z"
+    },
+    "skills": [
+      "MongoDB",
+      "Python",
+      "PowerBI",
+      "Aggregation Pipeline",
+      "SQL"
+    ],
+    "experienceYears": 5,
+    "education": "Đại học Kinh Tế TP.HCM",
+    "address": "Cầu Giấy, Hà Nội",
+    "cvUrl": "https://cv.talentflow.local/longle.data.pdf",
+    "notes": "Mạnh aggregation, đang technical",
+    "experience": [
+      {
+        "company": "Viettel Digital",
+        "position": "Data Analyst",
+        "startDate": {
+          "$date": "2020-06-01T00:00:00.000Z"
+        },
+        "description": "Pipeline báo cáo NoSQL tuyển dụng",
+        "endDate": {
+          "$date": "2026-08-01T00:00:00.000Z"
+        }
+      }
+    ],
+    "createdAt": {
+      "$date": "2026-08-20T00:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f303333333333333304"
+    },
+    "fullName": "Phạm Thu Thảo",
+    "email": "thuthao.hr@gmail.com",
+    "phone": "0933445566",
+    "gender": "female",
+    "dateOfBirth": {
+      "$date": "2001-03-08T00:00:00.000Z"
+    },
+    "skills": [
+      "Sourcing ứng viên",
+      "Headhunting",
+      "Giao tiếp",
+      "Tiếng Anh tốt"
+    ],
+    "experienceYears": 2,
+    "education": "Đại học Luật TP.HCM",
+    "address": "Tân Bình, TP. Hồ Chí Minh",
+    "cvUrl": "https://cv.talentflow.local/thuthao.hr.pdf",
+    "notes": "Network IT khá tốt, đang screening",
+    "experience": [
+      {
+        "company": "Navigos",
+        "position": "IT Recruiter",
+        "startDate": {
+          "$date": "2024-04-01T00:00:00.000Z"
+        },
+        "description": "Sourcing backend/frontend",
+        "endDate": {
+          "$date": "2026-08-01T00:00:00.000Z"
+        }
+      }
+    ],
+    "createdAt": {
+      "$date": "2026-08-20T00:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f303333333333333305"
+    },
+    "fullName": "Đỗ Minh Tuấn",
+    "email": "minhtuan.fullstack@gmail.com",
+    "phone": "0944556677",
+    "gender": "male",
+    "dateOfBirth": {
+      "$date": "1999-07-19T00:00:00.000Z"
+    },
+    "skills": [
+      "Node.js",
+      "React",
+      "MongoDB",
+      "JavaScript"
+    ],
+    "experienceYears": 3,
+    "education": "Đại học CNTT - ĐHQG",
+    "address": "Thủ Đức, TP. Hồ Chí Minh",
+    "cvUrl": "https://cv.talentflow.local/minhtuan.fullstack.pdf",
+    "notes": "Fullstack nhanh, đang phỏng vấn backend",
+    "experience": [
+      {
+        "company": "KMS Technology",
+        "position": "Fullstack Developer",
+        "startDate": {
+          "$date": "2023-02-01T00:00:00.000Z"
+        },
+        "description": "MERN stack portal nhân sự",
+        "endDate": {
+          "$date": "2026-08-15T00:00:00.000Z"
+        }
+      }
+    ],
+    "createdAt": {
+      "$date": "2026-08-20T00:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f303333333333333306"
+    },
+    "fullName": "Võ Thị Quỳnh Hương",
+    "email": "quynhhuong.mkt@gmail.com",
+    "phone": "0977889900",
+    "gender": "female",
+    "dateOfBirth": {
+      "$date": "2001-11-03T00:00:00.000Z"
+    },
+    "skills": [
+      "Google Ads",
+      "Facebook Ads",
+      "SEO",
+      "Content Marketing"
+    ],
+    "experienceYears": 2,
+    "education": "Đại học Ngoại Thương",
+    "address": "Hải Châu, Đà Nẵng",
+    "cvUrl": "https://cv.talentflow.local/quynhhuong.mkt.pdf",
+    "notes": "Đã ký HĐ thử việc marketing",
+    "experience": [
+      {
+        "company": "Haravan",
+        "position": "Performance Marketer",
+        "startDate": {
+          "$date": "2024-01-01T00:00:00.000Z"
+        },
+        "description": "Tối ưu CPA ads tuyển dụng",
+        "endDate": {
+          "$date": "2026-08-20T00:00:00.000Z"
+        }
+      }
+    ],
+    "createdAt": {
+      "$date": "2026-08-20T00:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f303333333333333307"
+    },
+    "fullName": "Hoàng Quốc Bảo",
+    "email": "bao.hq@gmail.com",
+    "phone": "0903322114",
+    "gender": "male",
+    "dateOfBirth": {
+      "$date": "2002-01-20T00:00:00.000Z"
+    },
+    "skills": [
+      "React",
+      "Tailwind CSS",
+      "JavaScript"
+    ],
+    "experienceYears": 1,
+    "education": "Đại học Sư phạm Kỹ thuật",
+    "address": "Quận 9, TP. Hồ Chí Minh",
+    "cvUrl": "https://cv.talentflow.local/bao.hq.pdf",
+    "notes": "Fresher frontend, hồ sơ mới nộp",
+    "experience": [
+      {
+        "company": "Freelance",
+        "position": "Frontend Intern",
+        "startDate": {
+          "$date": "2025-06-01T00:00:00.000Z"
+        },
+        "description": "Landing page tuyển dụng React",
+        "endDate": {
+          "$date": "2026-08-01T00:00:00.000Z"
+        }
+      }
+    ],
+    "createdAt": {
+      "$date": "2026-08-20T00:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f303333333333333308"
+    },
+    "fullName": "Bùi Mai Phương",
+    "email": "maiphuong.qa@gmail.com",
+    "phone": "0912344321",
+    "gender": "female",
+    "dateOfBirth": {
+      "$date": "1996-04-30T00:00:00.000Z"
+    },
+    "skills": [
+      "Manual Testing",
+      "Postman",
+      "Automation Testing",
+      "SQL"
+    ],
+    "experienceYears": 6,
+    "education": "Đại học Mở TP.HCM",
+    "address": "Quận 3, TP. Hồ Chí Minh",
+    "cvUrl": "https://cv.talentflow.local/maiphuong.qa.pdf",
+    "notes": "QA senior, từng bị reject vì apply nhầm backend",
+    "experience": [
+      {
+        "company": "FPT IS",
+        "position": "QA Lead",
+        "startDate": {
+          "$date": "2019-01-01T00:00:00.000Z"
+        },
+        "description": "Test API và regression web",
+        "endDate": {
+          "$date": "2026-07-01T00:00:00.000Z"
+        }
+      }
+    ],
+    "createdAt": {
+      "$date": "2026-08-20T00:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f303333333333333309"
+    },
+    "fullName": "Cao Minh Khôi",
+    "email": "khoi.devops@gmail.com",
+    "phone": "0901888777",
+    "gender": "male",
+    "dateOfBirth": {
+      "$date": "1995-02-11T00:00:00.000Z"
+    },
+    "skills": [
+      "Docker",
+      "CI/CD",
+      "Linux",
+      "MongoDB",
+      "AWS"
+    ],
+    "experienceYears": 6,
+    "education": "Đại học Bách Khoa Hà Nội",
+    "address": "Cầu Giấy, Hà Nội",
+    "cvUrl": "https://cv.talentflow.local/khoi.devops.pdf",
+    "notes": "DevOps giàu kinh nghiệm, đang technical",
+    "experience": [
+      {
+        "company": "VNG",
+        "position": "DevOps Engineer",
+        "startDate": {
+          "$date": "2019-08-01T00:00:00.000Z"
+        },
+        "description": "MongoDB replica set và CI",
+        "endDate": {
+          "$date": "2026-08-01T00:00:00.000Z"
+        }
+      }
+    ],
+    "createdAt": {
+      "$date": "2026-08-20T00:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f303333333333333310"
+    },
+    "fullName": "Nguyễn Thị Hồng Nhung",
+    "email": "nhung.qa@gmail.com",
+    "phone": "0932111222",
+    "gender": "female",
+    "dateOfBirth": {
+      "$date": "1998-08-09T00:00:00.000Z"
+    },
+    "skills": [
+      "Manual Testing",
+      "Postman",
+      "Cypress",
+      "SQL"
+    ],
+    "experienceYears": 4,
+    "education": "Đại học Khoa học Tự nhiên",
+    "address": "Phú Nhuận, TP. Hồ Chí Minh",
+    "cvUrl": "https://cv.talentflow.local/nhung.qa.pdf",
+    "notes": "Đã hired QA",
+    "experience": [
+      {
+        "company": "Shopee",
+        "position": "QA Engineer",
+        "startDate": {
+          "$date": "2022-03-01T00:00:00.000Z"
+        },
+        "description": "Cypress e2e và test API",
+        "endDate": {
+          "$date": "2026-08-15T00:00:00.000Z"
+        }
+      }
+    ],
+    "createdAt": {
+      "$date": "2026-08-20T00:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f303333333333333311"
+    },
+    "fullName": "Phạm Đức Thành",
+    "email": "thanh.sales@gmail.com",
+    "phone": "0903555666",
+    "gender": "male",
+    "dateOfBirth": {
+      "$date": "1999-10-02T00:00:00.000Z"
+    },
+    "skills": [
+      "Tư vấn bán hàng",
+      "CRM",
+      "Giao tiếp",
+      "Excel"
+    ],
+    "experienceYears": 3,
+    "education": "Đại học Kinh tế Quốc dân",
+    "address": "Hai Bà Trưng, Hà Nội",
+    "cvUrl": "https://cv.talentflow.local/thanh.sales.pdf",
+    "notes": "Chốt sales tốt, đã nhận việc",
+    "experience": [
+      {
+        "company": "Base.vn",
+        "position": "Sales Executive",
+        "startDate": {
+          "$date": "2023-05-01T00:00:00.000Z"
+        },
+        "description": "Bán HRM cho SME",
+        "endDate": {
+          "$date": "2026-08-20T00:00:00.000Z"
+        }
+      }
+    ],
+    "createdAt": {
+      "$date": "2026-08-20T00:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f303333333333333312"
+    },
+    "fullName": "Lê Thị Kim Anh",
+    "email": "kimanh.cs@gmail.com",
+    "phone": "0977000111",
+    "gender": "female",
+    "dateOfBirth": {
+      "$date": "2000-06-18T00:00:00.000Z"
+    },
+    "skills": [
+      "Customer success",
+      "CRM",
+      "Giao tiếp",
+      "Tiếng Anh"
+    ],
+    "experienceYears": 2,
+    "education": "Đại học Ngoại thương",
+    "address": "Đống Đa, Hà Nội",
+    "cvUrl": "https://cv.talentflow.local/kimanh.cs.pdf",
+    "notes": "CS đang culture fit",
+    "experience": [
+      {
+        "company": "Panda",
+        "position": "CS Executive",
+        "startDate": {
+          "$date": "2024-02-01T00:00:00.000Z"
+        },
+        "description": "Onboard 40+ khách SaaS",
+        "endDate": {
+          "$date": "2026-08-30T00:00:00.000Z"
+        }
+      }
+    ],
+    "createdAt": {
+      "$date": "2026-08-20T00:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f303333333333333313"
+    },
+    "fullName": "Vũ Hoàng Nam",
+    "email": "nam.po@gmail.com",
+    "phone": "0915000444",
+    "gender": "male",
+    "dateOfBirth": {
+      "$date": "1994-01-25T00:00:00.000Z"
+    },
+    "skills": [
+      "Agile",
+      "User story",
+      "Figma",
+      "SQL"
+    ],
+    "experienceYears": 7,
+    "education": "Đại học FPT",
+    "address": "Quận 7, TP. Hồ Chí Minh",
+    "cvUrl": "https://cv.talentflow.local/nam.po.pdf",
+    "notes": "PO mạnh nhưng vị trí đã đóng",
+    "experience": [
+      {
+        "company": "MoMo",
+        "position": "Product Owner",
+        "startDate": {
+          "$date": "2019-01-01T00:00:00.000Z"
+        },
+        "description": "Quản lý backlog ví điện tử",
+        "endDate": {
+          "$date": "2026-06-01T00:00:00.000Z"
+        }
+      }
+    ],
+    "createdAt": {
+      "$date": "2026-08-20T00:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f303333333333333314"
+    },
+    "fullName": "Đinh Thu Hà",
+    "email": "ha.finance@gmail.com",
+    "phone": "0933666888",
+    "gender": "female",
+    "dateOfBirth": {
+      "$date": "1998-12-05T00:00:00.000Z"
+    },
+    "skills": [
+      "Kế toán",
+      "Excel",
+      "MISA",
+      "Luật thuế"
+    ],
+    "experienceYears": 3,
+    "education": "Học viện Tài chính",
+    "address": "Tân Phú, TP. Hồ Chí Minh",
+    "cvUrl": "https://cv.talentflow.local/ha.finance.pdf",
+    "notes": "Hồ sơ kế toán đang screening",
+    "experience": [
+      {
+        "company": "KPMG",
+        "position": "Junior Accountant",
+        "startDate": {
+          "$date": "2023-01-01T00:00:00.000Z"
+        },
+        "description": "Hạch toán lương và bảo hiểm",
+        "endDate": {
+          "$date": "2026-08-01T00:00:00.000Z"
+        }
+      }
+    ],
+    "createdAt": {
+      "$date": "2026-08-20T00:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f303333333333333315"
+    },
+    "fullName": "Trịnh Văn Khoa",
+    "email": "khoa.intern@gmail.com",
+    "phone": "0902777888",
+    "gender": "male",
+    "dateOfBirth": {
+      "$date": "2003-04-14T00:00:00.000Z"
+    },
+    "skills": [
+      "JavaScript",
+      "Node.js",
+      "MongoDB",
+      "Git"
+    ],
+    "experienceYears": 0,
+    "education": "Đại học CNTT - ĐHQG",
+    "address": "Thủ Đức, TP. Hồ Chí Minh",
+    "cvUrl": "https://cv.talentflow.local/khoa.intern.pdf",
+    "notes": "Intern backend mới nộp",
+    "experience": [],
+    "createdAt": {
+      "$date": "2026-08-20T00:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f303333333333333316"
+    },
+    "fullName": "Mai Phương Thảo",
+    "email": "thaocontent@gmail.com",
+    "phone": "0968123456",
+    "gender": "female",
+    "dateOfBirth": {
+      "$date": "2001-07-07T00:00:00.000Z"
+    },
+    "skills": [
+      "Copywriting",
+      "Canva",
+      "SEO",
+      "Content Marketing"
+    ],
+    "experienceYears": 2,
+    "education": "Đại học KHXH&NV",
+    "address": "Quận 10, TP. Hồ Chí Minh",
+    "cvUrl": "https://cv.talentflow.local/thaocontent.pdf",
+    "notes": "Apply content khi JD đang paused",
+    "experience": [
+      {
+        "company": "Yeah1",
+        "position": "Content Creator",
+        "startDate": {
+          "$date": "2024-03-01T00:00:00.000Z"
+        },
+        "description": "Series tuyển dụng và script video",
+        "endDate": {
+          "$date": "2026-08-01T00:00:00.000Z"
+        }
+      }
+    ],
+    "createdAt": {
+      "$date": "2026-08-20T00:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f303333333333333317"
+    },
+    "fullName": "Nguyễn Quốc Việt",
+    "email": "viet.kam@gmail.com",
+    "phone": "0909444555",
+    "gender": "male",
+    "dateOfBirth": {
+      "$date": "1993-09-12T00:00:00.000Z"
+    },
+    "skills": [
+      "Account management",
+      "Negotiation",
+      "B2B Sales",
+      "Excel"
+    ],
+    "experienceYears": 8,
+    "education": "Đại học Ngoại thương",
+    "address": "Ba Đình, Hà Nội",
+    "cvUrl": "https://cv.talentflow.local/viet.kam.pdf",
+    "notes": "KAM senior, đang vòng final",
+    "experience": [
+      {
+        "company": "SAP",
+        "position": "Account Manager",
+        "startDate": {
+          "$date": "2018-01-01T00:00:00.000Z"
+        },
+        "description": "Quản lý 12 tài khoản enterprise",
+        "endDate": {
+          "$date": "2026-08-01T00:00:00.000Z"
+        }
+      }
+    ],
+    "createdAt": {
+      "$date": "2026-08-20T00:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f303333333333333318"
+    },
+    "fullName": "Trần Gia Hân",
+    "email": "han.hrbp@gmail.com",
+    "phone": "0918333444",
+    "gender": "female",
+    "dateOfBirth": {
+      "$date": "1996-11-21T00:00:00.000Z"
+    },
+    "skills": [
+      "HRBP",
+      "Labor law",
+      "Performance review",
+      "Giao tiếp"
+    ],
+    "experienceYears": 5,
+    "education": "Đại học Luật Hà Nội",
+    "address": "Hoàn Kiếm, Hà Nội",
+    "cvUrl": "https://cv.talentflow.local/han.hrbp.pdf",
+    "notes": "Đã gửi offer HRBP",
+    "experience": [
+      {
+        "company": "VinGroup",
+        "position": "HRBP",
+        "startDate": {
+          "$date": "2021-04-01T00:00:00.000Z"
+        },
+        "description": "Partner khối công nghệ 120 người",
+        "endDate": {
+          "$date": "2026-08-20T00:00:00.000Z"
+        }
+      }
+    ],
+    "createdAt": {
+      "$date": "2026-08-20T00:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f303333333333333319"
+    },
+    "fullName": "Hồ Anh Tuấn",
+    "email": "tuan.data@gmail.com",
+    "phone": "0988000112",
+    "gender": "male",
+    "dateOfBirth": {
+      "$date": "2000-03-03T00:00:00.000Z"
+    },
+    "skills": [
+      "Python",
+      "SQL",
+      "PowerBI",
+      "MongoDB"
+    ],
+    "experienceYears": 1,
+    "education": "Đại học Bách Khoa TP.HCM",
+    "address": "Gò Vấp, TP. Hồ Chí Minh",
+    "cvUrl": "https://cv.talentflow.local/tuan.data.pdf",
+    "notes": "Data junior đang screening",
+    "experience": [
+      {
+        "company": "Capstone",
+        "position": "Data Intern",
+        "startDate": {
+          "$date": "2025-01-01T00:00:00.000Z"
+        },
+        "description": "Dashboard PowerBI từ MongoDB",
+        "endDate": {
+          "$date": "2026-06-01T00:00:00.000Z"
+        }
+      }
+    ],
+    "createdAt": {
+      "$date": "2026-08-20T00:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f303333333333333320"
+    },
+    "fullName": "Lý Minh Châu",
+    "email": "chau.fe@gmail.com",
+    "phone": "0901666777",
+    "gender": "female",
+    "dateOfBirth": {
+      "$date": "2002-05-19T00:00:00.000Z"
+    },
+    "skills": [
+      "React",
+      "Tailwind CSS",
+      "TypeScript",
+      "JavaScript"
+    ],
+    "experienceYears": 1,
+    "education": "Đại học FPT",
+    "address": "Quận 4, TP. Hồ Chí Minh",
+    "cvUrl": "https://cv.talentflow.local/chau.fe.pdf",
+    "notes": "Frontend fresher, hồ sơ mới",
+    "experience": [
+      {
+        "company": "Personal project",
+        "position": "Frontend Developer",
+        "startDate": {
+          "$date": "2025-09-01T00:00:00.000Z"
+        },
+        "description": "Clone ATS board React + Tailwind"
+      }
+    ],
+    "createdAt": {
+      "$date": "2026-08-20T00:00:00.000Z"
+    }
+  }
+]

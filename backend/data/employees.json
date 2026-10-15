@@ -1,0 +1,257 @@
+[
+  {
+    "_id": {
+      "$oid": "66dd8f606666666666666601"
+    },
+    "fullName": "Nguyễn Văn An",
+    "email": "nguyenvanan.dev@gmail.com",
+    "password": "123456",
+    "role": "employee",
+    "departmentId": {
+      "$oid": "66dd8f101111111111111101"
+    },
+    "positionId": {
+      "$oid": "66dd8f202222222222222201"
+    },
+    "startDate": {
+      "$date": "2026-09-01T00:00:00.000Z"
+    },
+    "status": "probation",
+    "officialSalary": 32000000,
+    "candidateId": {
+      "$oid": "66dd8f303333333333333301"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f606666666666666602"
+    },
+    "fullName": "Võ Thị Quỳnh Hương",
+    "email": "quynhhuong.mkt@gmail.com",
+    "password": "123456",
+    "role": "employee",
+    "departmentId": {
+      "$oid": "66dd8f101111111111111103"
+    },
+    "positionId": {
+      "$oid": "66dd8f202222222222222205"
+    },
+    "startDate": {
+      "$date": "2026-09-05T00:00:00.000Z"
+    },
+    "status": "probation",
+    "officialSalary": 18000000,
+    "candidateId": {
+      "$oid": "66dd8f303333333333333306"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f606666666666666603"
+    },
+    "fullName": "Lê Thị Mai",
+    "email": "lethimai.hr@gmail.com",
+    "password": "123456",
+    "role": "admin",
+    "departmentId": {
+      "$oid": "66dd8f101111111111111102"
+    },
+    "positionId": {
+      "$oid": "66dd8f202222222222222204"
+    },
+    "startDate": {
+      "$date": "2025-01-10T00:00:00.000Z"
+    },
+    "status": "active",
+    "officialSalary": 28000000
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f606666666666666604"
+    },
+    "fullName": "Nguyễn Văn Hùng",
+    "email": "hung.manager@gmail.com",
+    "password": "123456",
+    "role": "interviewer",
+    "departmentId": {
+      "$oid": "66dd8f101111111111111101"
+    },
+    "positionId": {
+      "$oid": "66dd8f202222222222222201"
+    },
+    "startDate": {
+      "$date": "2024-03-01T00:00:00.000Z"
+    },
+    "status": "active",
+    "officialSalary": 45000000
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f606666666666666605"
+    },
+    "fullName": "Trần Quốc Toản",
+    "email": "toan.mkt@gmail.com",
+    "password": "123456",
+    "role": "interviewer",
+    "departmentId": {
+      "$oid": "66dd8f101111111111111103"
+    },
+    "positionId": {
+      "$oid": "66dd8f202222222222222205"
+    },
+    "startDate": {
+      "$date": "2024-06-01T00:00:00.000Z"
+    },
+    "status": "active",
+    "officialSalary": 30000000
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f606666666666666606"
+    },
+    "fullName": "Phạm Minh Đức",
+    "email": "duc.sales@gmail.com",
+    "password": "123456",
+    "role": "interviewer",
+    "departmentId": {
+      "$oid": "66dd8f101111111111111104"
+    },
+    "positionId": {
+      "$oid": "66dd8f202222222222222207"
+    },
+    "startDate": {
+      "$date": "2024-06-01T00:00:00.000Z"
+    },
+    "status": "active",
+    "officialSalary": 38000000
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f606666666666666607"
+    },
+    "fullName": "Trần Thị Lan",
+    "email": "lan.finance@gmail.com",
+    "password": "123456",
+    "role": "employee",
+    "departmentId": {
+      "$oid": "66dd8f101111111111111105"
+    },
+    "positionId": {
+      "$oid": "66dd8f202222222222222213"
+    },
+    "startDate": {
+      "$date": "2025-01-15T00:00:00.000Z"
+    },
+    "status": "active",
+    "officialSalary": 22000000
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f606666666666666608"
+    },
+    "fullName": "Ngô Bảo Châu",
+    "email": "chau.cs@gmail.com",
+    "password": "123456",
+    "role": "employee",
+    "departmentId": {
+      "$oid": "66dd8f101111111111111106"
+    },
+    "positionId": {
+      "$oid": "66dd8f202222222222222214"
+    },
+    "startDate": {
+      "$date": "2025-02-01T00:00:00.000Z"
+    },
+    "status": "active",
+    "officialSalary": 24000000
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f606666666666666609"
+    },
+    "fullName": "Trần Thị Bích Ngọc",
+    "email": "bichngoc.frontend@gmail.com",
+    "password": "123456",
+    "role": "employee",
+    "departmentId": {
+      "$oid": "66dd8f101111111111111101"
+    },
+    "positionId": {
+      "$oid": "66dd8f202222222222222202"
+    },
+    "startDate": {
+      "$date": "2026-09-08T00:00:00.000Z"
+    },
+    "status": "probation",
+    "officialSalary": 22000000,
+    "candidateId": {
+      "$oid": "66dd8f303333333333333302"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f606666666666666610"
+    },
+    "fullName": "Nguyễn Thị Hồng Nhung",
+    "email": "nhung.qa@gmail.com",
+    "password": "123456",
+    "role": "employee",
+    "departmentId": {
+      "$oid": "66dd8f101111111111111101"
+    },
+    "positionId": {
+      "$oid": "66dd8f202222222222222210"
+    },
+    "startDate": {
+      "$date": "2026-09-12T00:00:00.000Z"
+    },
+    "status": "probation",
+    "officialSalary": 20000000,
+    "candidateId": {
+      "$oid": "66dd8f303333333333333310"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f606666666666666611"
+    },
+    "fullName": "Phạm Đức Thành",
+    "email": "thanh.sales@gmail.com",
+    "password": "123456",
+    "role": "employee",
+    "departmentId": {
+      "$oid": "66dd8f101111111111111104"
+    },
+    "positionId": {
+      "$oid": "66dd8f202222222222222206"
+    },
+    "startDate": {
+      "$date": "2026-09-14T00:00:00.000Z"
+    },
+    "status": "probation",
+    "officialSalary": 16000000,
+    "candidateId": {
+      "$oid": "66dd8f303333333333333311"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f606666666666666612"
+    },
+    "fullName": "Nguyễn Thị Hoa",
+    "email": "hoa.hr@gmail.com",
+    "password": "123456",
+    "role": "hr",
+    "departmentId": {
+      "$oid": "66dd8f101111111111111102"
+    },
+    "positionId": {
+      "$oid": "66dd8f202222222222222204"
+    },
+    "startDate": {
+      "$date": "2025-05-01T00:00:00.000Z"
+    },
+    "status": "active",
+    "officialSalary": 15000000
+  }
+]

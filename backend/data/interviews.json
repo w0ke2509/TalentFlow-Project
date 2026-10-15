@@ -1,0 +1,362 @@
+[
+  {
+    "_id": {
+      "$oid": "66dd8f505555555555555501"
+    },
+    "applicationId": {
+      "$oid": "66dd8f404444444444444401"
+    },
+    "interviewer": "Nguyễn Văn Hùng (Trưởng phòng IT)",
+    "scheduledAt": {
+      "$date": "2026-08-30T07:00:00.000Z"
+    },
+    "round": "Phỏng vấn kỹ thuật",
+    "type": "technical",
+    "location": "Phòng họp A1",
+    "score": 95,
+    "result": "pass",
+    "feedback": "Nắm sharding, index và aggregation rất chắc"
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f505555555555555502"
+    },
+    "applicationId": {
+      "$oid": "66dd8f404444444444444401"
+    },
+    "interviewer": "Lê Thị Mai (Trưởng phòng HR)",
+    "scheduledAt": {
+      "$date": "2026-08-31T02:00:00.000Z"
+    },
+    "round": "Sơ vấn nhân sự",
+    "type": "hr",
+    "location": "Google Meet",
+    "score": 90,
+    "result": "pass",
+    "feedback": "Văn hóa phù hợp, chốt 32tr"
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f505555555555555503"
+    },
+    "applicationId": {
+      "$oid": "66dd8f404444444444444402"
+    },
+    "interviewer": "Nguyễn Văn Hùng (Trưởng phòng IT)",
+    "scheduledAt": {
+      "$date": "2026-09-01T03:00:00.000Z"
+    },
+    "round": "Phỏng vấn kỹ thuật",
+    "type": "technical",
+    "location": "Google Meet",
+    "score": 92,
+    "result": "pass",
+    "feedback": "React/Tailwind chắc, UI sense tốt"
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f505555555555555504"
+    },
+    "applicationId": {
+      "$oid": "66dd8f404444444444444402"
+    },
+    "interviewer": "Lê Thị Mai (Trưởng phòng HR)",
+    "scheduledAt": {
+      "$date": "2026-09-02T02:00:00.000Z"
+    },
+    "round": "Sơ vấn nhân sự",
+    "type": "hr",
+    "location": "Google Meet",
+    "score": 88,
+    "result": "pass",
+    "feedback": "Thái độ chuyên nghiệp, nhận offer"
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f505555555555555505"
+    },
+    "applicationId": {
+      "$oid": "66dd8f404444444444444403"
+    },
+    "interviewer": "Nguyễn Văn Hùng (Trưởng phòng IT)",
+    "scheduledAt": {
+      "$date": "2026-09-30T02:30:00.000Z"
+    },
+    "round": "Phỏng vấn kỹ thuật",
+    "type": "technical",
+    "location": "Phòng họp B2",
+    "score": 0,
+    "result": "pending",
+    "feedback": "Chuẩn bị câu hỏi aggregation"
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f505555555555555506"
+    },
+    "applicationId": {
+      "$oid": "66dd8f404444444444444405"
+    },
+    "interviewer": "Nguyễn Văn Hùng (Trưởng phòng IT)",
+    "scheduledAt": {
+      "$date": "2026-10-05T07:30:00.000Z"
+    },
+    "round": "Phỏng vấn kỹ thuật",
+    "type": "technical",
+    "location": "Google Meet",
+    "score": 0,
+    "result": "pending",
+    "feedback": "Live coding REST + MongoDB"
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f505555555555555507"
+    },
+    "applicationId": {
+      "$oid": "66dd8f404444444444444406"
+    },
+    "interviewer": "Trần Quốc Toản (Trưởng phòng Marketing)",
+    "scheduledAt": {
+      "$date": "2026-09-08T08:00:00.000Z"
+    },
+    "round": "Phỏng vấn chuyên môn",
+    "type": "technical",
+    "location": "Phòng họp A2",
+    "score": 90,
+    "result": "pass",
+    "feedback": "Case ads rõ, tối ưu CPA tốt"
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f505555555555555508"
+    },
+    "applicationId": {
+      "$oid": "66dd8f404444444444444408"
+    },
+    "interviewer": "Nguyễn Văn Hùng (Trưởng phòng IT)",
+    "scheduledAt": {
+      "$date": "2026-09-16T07:30:00.000Z"
+    },
+    "round": "Phỏng vấn kỹ thuật",
+    "type": "technical",
+    "location": "Google Meet",
+    "score": 52,
+    "result": "fail",
+    "feedback": "Không đủ kiến trúc backend/NoSQL"
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f505555555555555509"
+    },
+    "applicationId": {
+      "$oid": "66dd8f404444444444444404"
+    },
+    "interviewer": "Lê Thị Mai (Trưởng phòng HR)",
+    "scheduledAt": {
+      "$date": "2026-10-12T03:00:00.000Z"
+    },
+    "round": "Sơ vấn nhân sự",
+    "type": "hr",
+    "location": "Google Meet",
+    "score": 0,
+    "result": "pending",
+    "feedback": "Gọi điện screening Recruiter"
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f505555555555555510"
+    },
+    "applicationId": {
+      "$oid": "66dd8f404444444444444409"
+    },
+    "interviewer": "Nguyễn Văn Hùng (Trưởng phòng IT)",
+    "scheduledAt": {
+      "$date": "2026-09-10T04:00:00.000Z"
+    },
+    "round": "Phỏng vấn kỹ thuật",
+    "type": "technical",
+    "location": "Phòng họp B1",
+    "score": 89,
+    "result": "pass",
+    "feedback": "Test case và Postman bài bản"
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f505555555555555511"
+    },
+    "applicationId": {
+      "$oid": "66dd8f404444444444444410"
+    },
+    "interviewer": "Phạm Minh Đức (GĐ Kinh doanh)",
+    "scheduledAt": {
+      "$date": "2026-09-11T06:00:00.000Z"
+    },
+    "round": "Phỏng vấn bán hàng",
+    "type": "culture",
+    "location": "Google Meet",
+    "score": 87,
+    "result": "pass",
+    "feedback": "Pitch SaaS tự tin"
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f505555555555555512"
+    },
+    "applicationId": {
+      "$oid": "66dd8f404444444444444411"
+    },
+    "interviewer": "Nguyễn Văn Hùng (Trưởng phòng IT)",
+    "scheduledAt": {
+      "$date": "2026-10-20T07:00:00.000Z"
+    },
+    "round": "Phỏng vấn kỹ thuật",
+    "type": "technical",
+    "location": "Phòng họp A1",
+    "score": 0,
+    "result": "pending",
+    "feedback": "Hỏi CI/CD và backup MongoDB"
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f505555555555555513"
+    },
+    "applicationId": {
+      "$oid": "66dd8f404444444444444412"
+    },
+    "interviewer": "Ngô Bảo Châu (Trưởng phòng CS)",
+    "scheduledAt": {
+      "$date": "2026-10-29T03:30:00.000Z"
+    },
+    "round": "Culture fit",
+    "type": "culture",
+    "location": "Google Meet",
+    "score": 0,
+    "result": "pending",
+    "feedback": "Case khách hàng khó tính"
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f505555555555555514"
+    },
+    "applicationId": {
+      "$oid": "66dd8f404444444444444413"
+    },
+    "interviewer": "Nguyễn Văn Hùng (Trưởng phòng IT)",
+    "scheduledAt": {
+      "$date": "2026-09-12T02:00:00.000Z"
+    },
+    "round": "Phỏng vấn sản phẩm",
+    "type": "final",
+    "location": "Google Meet",
+    "score": 80,
+    "result": "fail",
+    "feedback": "Ứng viên tốt nhưng JD đã đóng"
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f505555555555555515"
+    },
+    "applicationId": {
+      "$oid": "66dd8f404444444444444417"
+    },
+    "interviewer": "Phạm Minh Đức (GĐ Kinh doanh)",
+    "scheduledAt": {
+      "$date": "2026-11-05T08:00:00.000Z"
+    },
+    "round": "Phỏng vấn Giám đốc",
+    "type": "final",
+    "location": "Phòng họp VIP",
+    "score": 0,
+    "result": "pending",
+    "feedback": "Final KAM, chốt package lương"
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f505555555555555516"
+    },
+    "applicationId": {
+      "$oid": "66dd8f404444444444444418"
+    },
+    "interviewer": "Lê Thị Mai (Trưởng phòng HR)",
+    "scheduledAt": {
+      "$date": "2026-09-14T02:30:00.000Z"
+    },
+    "round": "Sơ vấn nhân sự",
+    "type": "hr",
+    "location": "Google Meet",
+    "score": 91,
+    "result": "pass",
+    "feedback": "HRBP giàu case, đã offer"
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f505555555555555517"
+    },
+    "applicationId": {
+      "$oid": "66dd8f404444444444444418"
+    },
+    "interviewer": "Nguyễn Văn Hùng (Trưởng phòng IT)",
+    "scheduledAt": {
+      "$date": "2026-09-15T07:00:00.000Z"
+    },
+    "round": "Culture fit với IT",
+    "type": "culture",
+    "location": "Phòng họp A1",
+    "score": 88,
+    "result": "pass",
+    "feedback": "Hiểu headcount tech"
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f505555555555555518"
+    },
+    "applicationId": {
+      "$oid": "66dd8f404444444444444421"
+    },
+    "interviewer": "Nguyễn Văn Hùng (Trưởng phòng IT)",
+    "scheduledAt": {
+      "$date": "2026-09-18T04:00:00.000Z"
+    },
+    "round": "Phỏng vấn QA",
+    "type": "technical",
+    "location": "Google Meet",
+    "score": 88,
+    "result": "pass",
+    "feedback": "Apply đúng JD QA, pass"
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f505555555555555519"
+    },
+    "applicationId": {
+      "$oid": "66dd8f404444444444444414"
+    },
+    "interviewer": "Trần Thị Lan (Trưởng phòng Tài chính)",
+    "scheduledAt": {
+      "$date": "2026-11-17T03:00:00.000Z"
+    },
+    "round": "Sơ vấn chuyên môn",
+    "type": "hr",
+    "location": "Google Meet",
+    "score": 0,
+    "result": "pending",
+    "feedback": "Kiểm tra chứng chỉ kế toán"
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f505555555555555520"
+    },
+    "applicationId": {
+      "$oid": "66dd8f404444444444444419"
+    },
+    "interviewer": "Lê Thị Mai (Trưởng phòng HR)",
+    "scheduledAt": {
+      "$date": "2026-11-26T02:00:00.000Z"
+    },
+    "round": "Screening",
+    "type": "hr",
+    "location": "Google Meet",
+    "score": 0,
+    "result": "pending",
+    "feedback": "Test SQL take-home"
+  }
+]

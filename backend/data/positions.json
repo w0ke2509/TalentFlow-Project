@@ -1,0 +1,410 @@
+[
+  {
+    "_id": {
+      "$oid": "66dd8f202222222222222201"
+    },
+    "title": "Senior Backend Engineer (Node.js/MongoDB)",
+    "departmentId": {
+      "$oid": "66dd8f101111111111111101"
+    },
+    "description": "Thiết kế API, tối ưu MongoDB và xây microservices ATS",
+    "requirements": [
+      "Node.js",
+      "MongoDB",
+      "Express",
+      "Docker",
+      "Redis"
+    ],
+    "salary": {
+      "min": 25000000,
+      "max": 40000000
+    },
+    "quantity": 3,
+    "status": "open",
+    "location": "Hồ Chí Minh (Hybrid)",
+    "level": "Senior",
+    "createdAt": {
+      "$date": "2026-08-05T00:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f202222222222222202"
+    },
+    "title": "Frontend Developer (React / Tailwind)",
+    "departmentId": {
+      "$oid": "66dd8f101111111111111101"
+    },
+    "description": "Phát triển SPA ATS, tối ưu UX form và dashboard thống kê",
+    "requirements": [
+      "React",
+      "JavaScript",
+      "Tailwind CSS",
+      "TypeScript"
+    ],
+    "salary": {
+      "min": 15000000,
+      "max": 25000000
+    },
+    "quantity": 4,
+    "status": "open",
+    "location": "Hồ Chí Minh",
+    "level": "Middle",
+    "createdAt": {
+      "$date": "2026-08-08T00:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f202222222222222203"
+    },
+    "title": "Data Analyst (NoSQL & BI)",
+    "departmentId": {
+      "$oid": "66dd8f101111111111111101"
+    },
+    "description": "Khai thác aggregation MongoDB và dựng báo cáo funnel tuyển dụng",
+    "requirements": [
+      "MongoDB",
+      "Python",
+      "PowerBI",
+      "Aggregation Pipeline",
+      "SQL"
+    ],
+    "salary": {
+      "min": 18000000,
+      "max": 30000000
+    },
+    "quantity": 2,
+    "status": "open",
+    "location": "Hà Nội / Remote",
+    "level": "Middle",
+    "createdAt": {
+      "$date": "2026-08-10T00:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f202222222222222204"
+    },
+    "title": "Chuyên viên Tuyển dụng IT (IT Recruiter)",
+    "departmentId": {
+      "$oid": "66dd8f101111111111111102"
+    },
+    "description": "Sourcing ứng viên IT, điều phối phỏng vấn và chăm sóc candidate",
+    "requirements": [
+      "Kỹ năng giao tiếp",
+      "Sourcing ứng viên",
+      "Headhunting",
+      "Tiếng Anh tốt"
+    ],
+    "salary": {
+      "min": 12000000,
+      "max": 20000000
+    },
+    "quantity": 2,
+    "status": "open",
+    "location": "Hồ Chí Minh",
+    "level": "Junior",
+    "createdAt": {
+      "$date": "2026-08-12T00:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f202222222222222205"
+    },
+    "title": "Digital Marketing Specialist",
+    "departmentId": {
+      "$oid": "66dd8f101111111111111103"
+    },
+    "description": "Chạy ads đa kênh, tối ưu CPA tuyển dụng và employer branding",
+    "requirements": [
+      "Google Ads",
+      "Facebook Ads",
+      "SEO",
+      "Content Marketing"
+    ],
+    "salary": {
+      "min": 14000000,
+      "max": 22000000
+    },
+    "quantity": 2,
+    "status": "open",
+    "location": "Đà Nẵng",
+    "level": "Middle",
+    "createdAt": {
+      "$date": "2026-08-15T00:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f202222222222222206"
+    },
+    "title": "Sales Executive (B2B SaaS)",
+    "departmentId": {
+      "$oid": "66dd8f101111111111111104"
+    },
+    "description": "Tìm kiếm khách hàng doanh nghiệp, demo ATS và chốt hợp đồng",
+    "requirements": [
+      "Tư vấn bán hàng",
+      "CRM",
+      "Giao tiếp",
+      "Tiếng Anh B2"
+    ],
+    "salary": {
+      "min": 12000000,
+      "max": 22000000
+    },
+    "quantity": 3,
+    "status": "open",
+    "location": "Hồ Chí Minh",
+    "level": "Junior",
+    "createdAt": {
+      "$date": "2026-08-18T00:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f202222222222222207"
+    },
+    "title": "Key Account Manager",
+    "departmentId": {
+      "$oid": "66dd8f101111111111111104"
+    },
+    "description": "Chăm sóc tài khoản lớn, upsell gói ATS và giữ chân khách hàng",
+    "requirements": [
+      "Account management",
+      "Negotiation",
+      "B2B Sales",
+      "Excel"
+    ],
+    "salary": {
+      "min": 22000000,
+      "max": 35000000
+    },
+    "quantity": 1,
+    "status": "open",
+    "location": "Hà Nội",
+    "level": "Senior",
+    "createdAt": {
+      "$date": "2026-08-20T00:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f202222222222222208"
+    },
+    "title": "HR Business Partner",
+    "departmentId": {
+      "$oid": "66dd8f101111111111111102"
+    },
+    "description": "Đồng hành manager IT/Sales về headcount, performance và giữ chân",
+    "requirements": [
+      "HRBP",
+      "Labor law",
+      "Performance review",
+      "Giao tiếp"
+    ],
+    "salary": {
+      "min": 18000000,
+      "max": 28000000
+    },
+    "quantity": 1,
+    "status": "open",
+    "location": "Hồ Chí Minh",
+    "level": "Middle",
+    "createdAt": {
+      "$date": "2026-08-22T00:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f202222222222222209"
+    },
+    "title": "Content Creator",
+    "departmentId": {
+      "$oid": "66dd8f101111111111111103"
+    },
+    "description": "Sản xuất bài viết tuyển dụng, landing page và video thương hiệu",
+    "requirements": [
+      "Copywriting",
+      "Canva",
+      "SEO",
+      "Content Marketing"
+    ],
+    "salary": {
+      "min": 10000000,
+      "max": 16000000
+    },
+    "quantity": 1,
+    "status": "paused",
+    "location": "Remote",
+    "level": "Junior",
+    "createdAt": {
+      "$date": "2026-08-25T00:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f202222222222222210"
+    },
+    "title": "QA Engineer",
+    "departmentId": {
+      "$oid": "66dd8f101111111111111101"
+    },
+    "description": "Kiểm thử API tuyển dụng, regression web ATS và viết test case",
+    "requirements": [
+      "Manual Testing",
+      "Postman",
+      "Automation Testing",
+      "SQL"
+    ],
+    "salary": {
+      "min": 16000000,
+      "max": 26000000
+    },
+    "quantity": 2,
+    "status": "open",
+    "location": "Hồ Chí Minh",
+    "level": "Middle",
+    "createdAt": {
+      "$date": "2026-08-26T00:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f202222222222222211"
+    },
+    "title": "DevOps Engineer",
+    "departmentId": {
+      "$oid": "66dd8f101111111111111101"
+    },
+    "description": "CI/CD, giám sát MongoDB, Docker cho staging và production",
+    "requirements": [
+      "Docker",
+      "CI/CD",
+      "Linux",
+      "MongoDB",
+      "AWS"
+    ],
+    "salary": {
+      "min": 28000000,
+      "max": 42000000
+    },
+    "quantity": 1,
+    "status": "open",
+    "location": "Hồ Chí Minh (Hybrid)",
+    "level": "Senior",
+    "createdAt": {
+      "$date": "2026-08-28T00:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f202222222222222212"
+    },
+    "title": "Product Owner",
+    "departmentId": {
+      "$oid": "66dd8f101111111111111101"
+    },
+    "description": "Quản lý backlog ATS, ưu tiên Kanban và làm việc với dev/QA",
+    "requirements": [
+      "Agile",
+      "User story",
+      "Figma",
+      "SQL"
+    ],
+    "salary": {
+      "min": 30000000,
+      "max": 45000000
+    },
+    "quantity": 1,
+    "status": "closed",
+    "location": "Hồ Chí Minh",
+    "level": "Lead",
+    "createdAt": {
+      "$date": "2026-07-01T00:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f202222222222222213"
+    },
+    "title": "Kế toán viên tổng hợp",
+    "departmentId": {
+      "$oid": "66dd8f101111111111111105"
+    },
+    "description": "Hạch toán lương, bảo hiểm và chi phí tuyển dụng theo tháng",
+    "requirements": [
+      "Kế toán",
+      "Excel",
+      "MISA",
+      "Luật thuế"
+    ],
+    "salary": {
+      "min": 12000000,
+      "max": 18000000
+    },
+    "quantity": 2,
+    "status": "open",
+    "location": "Hồ Chí Minh",
+    "level": "Junior",
+    "createdAt": {
+      "$date": "2026-09-01T00:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f202222222222222214"
+    },
+    "title": "Customer Success Executive",
+    "departmentId": {
+      "$oid": "66dd8f101111111111111106"
+    },
+    "description": "Onboard khách hàng dùng ATS, theo dõi health score và tái tục",
+    "requirements": [
+      "Customer success",
+      "CRM",
+      "Giao tiếp",
+      "Tiếng Anh"
+    ],
+    "salary": {
+      "min": 13000000,
+      "max": 20000000
+    },
+    "quantity": 2,
+    "status": "open",
+    "location": "Hà Nội",
+    "level": "Middle",
+    "createdAt": {
+      "$date": "2026-09-02T00:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f202222222222222215"
+    },
+    "title": "Intern Backend Node.js",
+    "departmentId": {
+      "$oid": "66dd8f101111111111111101"
+    },
+    "description": "Hỗ trợ viết API CRUD, seed MongoDB và test Postman",
+    "requirements": [
+      "JavaScript",
+      "Node.js",
+      "MongoDB",
+      "Git"
+    ],
+    "salary": {
+      "min": 4000000,
+      "max": 6000000
+    },
+    "quantity": 2,
+    "status": "open",
+    "location": "Hồ Chí Minh",
+    "level": "Intern",
+    "createdAt": {
+      "$date": "2026-09-04T00:00:00.000Z"
+    }
+  }
+]

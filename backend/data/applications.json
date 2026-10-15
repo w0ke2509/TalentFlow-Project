@@ -1,0 +1,398 @@
+[
+  {
+    "_id": {
+      "$oid": "66dd8f404444444444444401"
+    },
+    "candidateId": {
+      "$oid": "66dd8f303333333333333301"
+    },
+    "positionId": {
+      "$oid": "66dd8f202222222222222201"
+    },
+    "appliedAt": {
+      "$date": "2026-08-28T09:00:00.000Z"
+    },
+    "status": "hired",
+    "source": "TopCV",
+    "score": 95,
+    "note": "Pass hết vòng, đã onboard backend"
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f404444444444444402"
+    },
+    "candidateId": {
+      "$oid": "66dd8f303333333333333302"
+    },
+    "positionId": {
+      "$oid": "66dd8f202222222222222202"
+    },
+    "appliedAt": {
+      "$date": "2026-08-29T10:30:00.000Z"
+    },
+    "status": "hired",
+    "source": "LinkedIn",
+    "score": 91,
+    "note": "Nhận offer frontend và đi làm"
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f404444444444444403"
+    },
+    "candidateId": {
+      "$oid": "66dd8f303333333333333303"
+    },
+    "positionId": {
+      "$oid": "66dd8f202222222222222203"
+    },
+    "appliedAt": {
+      "$date": "2026-08-30T14:15:00.000Z"
+    },
+    "status": "interview",
+    "source": "Website",
+    "score": 85,
+    "note": "Đang technical vòng 2"
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f404444444444444404"
+    },
+    "candidateId": {
+      "$oid": "66dd8f303333333333333304"
+    },
+    "positionId": {
+      "$oid": "66dd8f202222222222222204"
+    },
+    "appliedAt": {
+      "$date": "2026-09-01T08:45:00.000Z"
+    },
+    "status": "screening",
+    "source": "VietnamWorks",
+    "score": 75,
+    "note": "HR đang rà CV recruiter"
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f404444444444444405"
+    },
+    "candidateId": {
+      "$oid": "66dd8f303333333333333305"
+    },
+    "positionId": {
+      "$oid": "66dd8f202222222222222201"
+    },
+    "appliedAt": {
+      "$date": "2026-09-02T16:20:00.000Z"
+    },
+    "status": "interview",
+    "source": "TopCV",
+    "score": 80,
+    "note": "Test coding ổn, chờ phỏng vấn"
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f404444444444444406"
+    },
+    "candidateId": {
+      "$oid": "66dd8f303333333333333306"
+    },
+    "positionId": {
+      "$oid": "66dd8f202222222222222205"
+    },
+    "appliedAt": {
+      "$date": "2026-09-03T11:00:00.000Z"
+    },
+    "status": "hired",
+    "source": "Facebook",
+    "score": 90,
+    "note": "Đã ký HĐ thử việc marketing"
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f404444444444444407"
+    },
+    "candidateId": {
+      "$oid": "66dd8f303333333333333307"
+    },
+    "positionId": {
+      "$oid": "66dd8f202222222222222202"
+    },
+    "appliedAt": {
+      "$date": "2026-09-04T13:40:00.000Z"
+    },
+    "status": "applied",
+    "source": "Website",
+    "score": 70,
+    "note": "Fresher mới nộp frontend"
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f404444444444444408"
+    },
+    "candidateId": {
+      "$oid": "66dd8f303333333333333308"
+    },
+    "positionId": {
+      "$oid": "66dd8f202222222222222201"
+    },
+    "appliedAt": {
+      "$date": "2026-09-05T15:00:00.000Z"
+    },
+    "status": "rejected",
+    "source": "TopCV",
+    "score": 50,
+    "note": "QA apply nhầm backend"
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f404444444444444409"
+    },
+    "candidateId": {
+      "$oid": "66dd8f303333333333333310"
+    },
+    "positionId": {
+      "$oid": "66dd8f202222222222222210"
+    },
+    "appliedAt": {
+      "$date": "2026-09-06T09:10:00.000Z"
+    },
+    "status": "hired",
+    "source": "LinkedIn",
+    "score": 89,
+    "note": "Hired QA, đã onboard"
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f404444444444444410"
+    },
+    "candidateId": {
+      "$oid": "66dd8f303333333333333311"
+    },
+    "positionId": {
+      "$oid": "66dd8f202222222222222206"
+    },
+    "appliedAt": {
+      "$date": "2026-09-06T11:20:00.000Z"
+    },
+    "status": "hired",
+    "source": "Website",
+    "score": 87,
+    "note": "Hired Sales Executive"
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f404444444444444411"
+    },
+    "candidateId": {
+      "$oid": "66dd8f303333333333333309"
+    },
+    "positionId": {
+      "$oid": "66dd8f202222222222222211"
+    },
+    "appliedAt": {
+      "$date": "2026-09-07T08:00:00.000Z"
+    },
+    "status": "interview",
+    "source": "LinkedIn",
+    "score": 92,
+    "note": "DevOps đang technical"
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f404444444444444412"
+    },
+    "candidateId": {
+      "$oid": "66dd8f303333333333333312"
+    },
+    "positionId": {
+      "$oid": "66dd8f202222222222222214"
+    },
+    "appliedAt": {
+      "$date": "2026-09-07T13:30:00.000Z"
+    },
+    "status": "interview",
+    "source": "VietnamWorks",
+    "score": 82,
+    "note": "CS đang culture fit"
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f404444444444444413"
+    },
+    "candidateId": {
+      "$oid": "66dd8f303333333333333313"
+    },
+    "positionId": {
+      "$oid": "66dd8f202222222222222212"
+    },
+    "appliedAt": {
+      "$date": "2026-09-08T10:00:00.000Z"
+    },
+    "status": "rejected",
+    "source": "LinkedIn",
+    "score": 84,
+    "note": "JD Product Owner đã đóng"
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f404444444444444414"
+    },
+    "candidateId": {
+      "$oid": "66dd8f303333333333333314"
+    },
+    "positionId": {
+      "$oid": "66dd8f202222222222222213"
+    },
+    "appliedAt": {
+      "$date": "2026-09-08T15:45:00.000Z"
+    },
+    "status": "screening",
+    "source": "Website",
+    "score": 73,
+    "note": "Kế toán chờ kiểm tra bằng cấp"
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f404444444444444415"
+    },
+    "candidateId": {
+      "$oid": "66dd8f303333333333333315"
+    },
+    "positionId": {
+      "$oid": "66dd8f202222222222222215"
+    },
+    "appliedAt": {
+      "$date": "2026-09-09T09:00:00.000Z"
+    },
+    "status": "applied",
+    "source": "Website",
+    "score": 68,
+    "note": "Intern backend mới nộp"
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f404444444444444416"
+    },
+    "candidateId": {
+      "$oid": "66dd8f303333333333333316"
+    },
+    "positionId": {
+      "$oid": "66dd8f202222222222222209"
+    },
+    "appliedAt": {
+      "$date": "2026-09-09T14:20:00.000Z"
+    },
+    "status": "applied",
+    "source": "Facebook",
+    "score": 71,
+    "note": "Content apply khi JD paused"
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f404444444444444417"
+    },
+    "candidateId": {
+      "$oid": "66dd8f303333333333333317"
+    },
+    "positionId": {
+      "$oid": "66dd8f202222222222222207"
+    },
+    "appliedAt": {
+      "$date": "2026-09-10T08:30:00.000Z"
+    },
+    "status": "interview",
+    "source": "TopCV",
+    "score": 93,
+    "note": "KAM đang vòng final"
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f404444444444444418"
+    },
+    "candidateId": {
+      "$oid": "66dd8f303333333333333318"
+    },
+    "positionId": {
+      "$oid": "66dd8f202222222222222208"
+    },
+    "appliedAt": {
+      "$date": "2026-09-10T11:10:00.000Z"
+    },
+    "status": "accepted",
+    "source": "LinkedIn",
+    "score": 90,
+    "note": "Đã gửi offer HRBP"
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f404444444444444419"
+    },
+    "candidateId": {
+      "$oid": "66dd8f303333333333333319"
+    },
+    "positionId": {
+      "$oid": "66dd8f202222222222222203"
+    },
+    "appliedAt": {
+      "$date": "2026-09-11T09:40:00.000Z"
+    },
+    "status": "screening",
+    "source": "Website",
+    "score": 74,
+    "note": "Data junior đang test SQL"
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f404444444444444420"
+    },
+    "candidateId": {
+      "$oid": "66dd8f303333333333333320"
+    },
+    "positionId": {
+      "$oid": "66dd8f202222222222222202"
+    },
+    "appliedAt": {
+      "$date": "2026-09-11T16:00:00.000Z"
+    },
+    "status": "applied",
+    "source": "TopCV",
+    "score": 69,
+    "note": "Frontend fresher chờ HR xem"
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f404444444444444421"
+    },
+    "candidateId": {
+      "$oid": "66dd8f303333333333333308"
+    },
+    "positionId": {
+      "$oid": "66dd8f202222222222222210"
+    },
+    "appliedAt": {
+      "$date": "2026-09-12T10:15:00.000Z"
+    },
+    "status": "accepted",
+    "source": "LinkedIn",
+    "score": 88,
+    "note": "Apply lại đúng JD QA, đã offer"
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f404444444444444422"
+    },
+    "candidateId": {
+      "$oid": "66dd8f303333333333333305"
+    },
+    "positionId": {
+      "$oid": "66dd8f202222222222222210"
+    },
+    "appliedAt": {
+      "$date": "2026-09-12T13:50:00.000Z"
+    },
+    "status": "screening",
+    "source": "Website",
+    "score": 77,
+    "note": "Fullstack apply thêm QA"
+  }
+]

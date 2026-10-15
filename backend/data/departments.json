@@ -1,0 +1,74 @@
+[
+  {
+    "_id": {
+      "$oid": "66dd8f101111111111111101"
+    },
+    "name": "Phòng Công nghệ thông tin",
+    "code": "IT",
+    "description": "Phát triển phần mềm, hạ tầng máy chủ, DevOps và bảo mật dữ liệu",
+    "manager": "Nguyễn Văn Hùng",
+    "createdAt": {
+      "$date": "2024-03-01T00:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f101111111111111102"
+    },
+    "name": "Phòng Nhân sự & Đào tạo",
+    "code": "HR",
+    "description": "Tuyển dụng, onboarding, đãi ngộ và đào tạo nội bộ",
+    "manager": "Lê Thị Mai",
+    "createdAt": {
+      "$date": "2024-03-01T00:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f101111111111111103"
+    },
+    "name": "Phòng Marketing & Truyền thông",
+    "code": "MKT",
+    "description": "Performance marketing, nội dung thương hiệu và growth",
+    "manager": "Trần Quốc Toản",
+    "createdAt": {
+      "$date": "2024-06-01T00:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f101111111111111104"
+    },
+    "name": "Phòng Kinh doanh & Đối tác",
+    "code": "SALES",
+    "description": "Bán hàng B2B, chăm sóc tài khoản và mở rộng thị trường",
+    "manager": "Phạm Minh Đức",
+    "createdAt": {
+      "$date": "2024-06-01T00:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f101111111111111105"
+    },
+    "name": "Phòng Tài chính & Kế toán",
+    "code": "FIN",
+    "description": "Kế toán quản trị, ngân sách tuyển dụng và kiểm soát chi phí nhân sự",
+    "manager": "Trần Thị Lan",
+    "createdAt": {
+      "$date": "2025-01-15T00:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "66dd8f101111111111111106"
+    },
+    "name": "Phòng Chăm sóc khách hàng",
+    "code": "CS",
+    "description": "Customer success, hỗ trợ onboard khách hàng doanh nghiệp",
+    "manager": "Ngô Bảo Châu",
+    "createdAt": {
+      "$date": "2025-02-01T00:00:00.000Z"
+    }
+  }
+]
