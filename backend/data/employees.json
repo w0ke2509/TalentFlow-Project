@@ -253,5 +253,65 @@
     },
     "status": "active",
     "officialSalary": 15000000
+  },
+  {
+    "_id": {
+      "$oid": "6ae187e8539ce8bbf2dc2322"
+    },
+    "fullName": "Admin TalentFlow",
+    "email": "admin@talentflow.com",
+    "password": "123456",
+    "role": "admin",
+    "departmentId": {
+      "$oid": "66dd8f101111111111111102"
+    },
+    "positionId": {
+      "$oid": "66dd8f202222222222222204"
+    },
+    "startDate": {
+      "$date": "2026-10-28T05:28:08.671Z"
+    },
+    "status": "active",
+    "officialSalary": 0
+  },
+  {
+    "_id": {
+      "$oid": "6ae187e8539ce8bbf2dc2323"
+    },
+    "fullName": "Employee TalentFlow",
+    "email": "yongbuseoh@gmail.com",
+    "password": "123456",
+    "role": "employee",
+    "departmentId": {
+      "$oid": "66dd8f101111111111111101"
+    },
+    "positionId": {
+      "$oid": "66dd8f202222222222222201"
+    },
+    "startDate": {
+      "$date": "2026-10-28T05:28:08.676Z"
+    },
+    "status": "active",
+    "officialSalary": 0
+  },
+  {
+    "_id": {
+      "$oid": "6ae187e8539ce8bbf2dc2324"
+    },
+    "fullName": "Interviewer TalentFlow",
+    "email": "hr@talentflow.com",
+    "password": "123456",
+    "role": "interviewer",
+    "departmentId": {
+      "$oid": "66dd8f101111111111111101"
+    },
+    "positionId": {
+      "$oid": "66dd8f202222222222222201"
+    },
+    "startDate": {
+      "$date": "2026-10-28T05:28:08.676Z"
+    },
+    "status": "active",
+    "officialSalary": 0
   }
 ]

@@ -136,24 +136,24 @@ const Login = () => {
             <div className="grid grid-cols-2 gap-2">
               <button
                 type="button"
-                onClick={() => handleFillAccount("lethimai.hr@gmail.com", "123456")}
+                onClick={() => handleFillAccount("admin@talentflow.com", "123456")}
                 className="p-2 rounded-xl bg-slate-50 hover:bg-indigo-50/80 border border-slate-200/80 hover:border-indigo-300 text-left transition-all cursor-pointer group"
               >
                 <div className="text-xs font-bold text-slate-800 group-hover:text-indigo-700 truncate">
-                  👑 HR Admin
+                  Admin
                 </div>
-                <div className="text-[10px] text-slate-400 truncate">lethimai.hr@...</div>
+                <div className="text-[10px] text-slate-400 truncate">admin@talentflow.com</div>
               </button>
 
               <button
                 type="button"
-                onClick={() => handleFillAccount("hung.manager@gmail.com", "123456")}
+                onClick={() => handleFillAccount("hr@talentflow.com", "123456")}
                 className="p-2 rounded-xl bg-slate-50 hover:bg-indigo-50/80 border border-slate-200/80 hover:border-indigo-300 text-left transition-all cursor-pointer group"
               >
                 <div className="text-xs font-bold text-slate-800 group-hover:text-indigo-700 truncate">
-                  💻 Tech Lead
+                  Interviewer
                 </div>
-                <div className="text-[10px] text-slate-400 truncate">hung.manager@...</div>
+                <div className="text-[10px] text-slate-400 truncate">hr@talentflow.com</div>
               </button>
             </div>
           </div>

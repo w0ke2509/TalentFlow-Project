@@ -133,7 +133,16 @@ Vite chuyển `/api` tới `http://localhost:5000`. Nếu đổi cổng backend,
 
 ### Tài khoản demo và quyền truy cập
 
-Sau khi **seed bộ dữ liệu mẫu**, đăng nhập quản trị bằng email `lethimai.hr@gmail.com`, mật khẩu `123456`. Với database restore, dùng tài khoản có trong bản backup đó. Mật khẩu demo phục vụ học tập nội bộ.
+Sau khi **seed bộ dữ liệu mẫu**, có thể dùng các tài khoản dưới đây, cùng mật khẩu `123456`. Với database restore, dùng tài khoản có trong bản backup đó. Mật khẩu demo phục vụ học tập nội bộ.
+
+| Vai trò | Email |
+| --- | --- |
+| Admin | `admin@talentflow.com` |
+| HR | `hoa.hr@gmail.com` |
+| Interviewer | `hr@talentflow.com` |
+| Employee | `yongbuseoh@gmail.com` |
+
+Hai nút **Admin** và **Interviewer** trên màn hình đăng nhập điền sẵn thông tin của hai tài khoản tương ứng. Email `hr@talentflow.com` mang vai trò `interviewer`; tài khoản employee bị chặn đăng nhập vào hệ thống quản lý tuyển dụng.
 
 | Vai trò | Phạm vi chính |
 | --- | --- |
