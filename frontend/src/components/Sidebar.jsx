@@ -131,27 +131,6 @@ const Sidebar = ({ currentTab, setCurrentTab }) => {
         })}
       </nav>
 
-      {/* System Status Footer */}
-      <div className={`border-t border-slate-800/80 bg-slate-950/50 ${isCollapsed ? "p-3 flex justify-center" : "p-4 space-y-2"}`}>
-        {isCollapsed ? (
-          <div title="WiredTiger Engine v7.0 • MongoDB Connected" className="flex items-center justify-center cursor-pointer">
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
-          </div>
-        ) : (
-          <>
-            <div className="flex items-center justify-between text-[11px] text-slate-400">
-              <span className="flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                <span className="text-slate-300 font-medium">WiredTiger Engine</span>
-              </span>
-              <span className="font-mono text-[10px] text-slate-400">v7.0</span>
-            </div>
-            <div className="text-[10px] text-slate-400 leading-tight">
-              Đồ án CSDL NoSQL
-            </div>
-          </>
-        )}
-      </div>
     </aside>
   );
 };

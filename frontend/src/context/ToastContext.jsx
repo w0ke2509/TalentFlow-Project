@@ -1,10 +1,17 @@
 import React, { createContext, useContext, useState, useCallback } from 'react';
+import { createPortal } from 'react-dom';
 import { CheckCircle2, AlertCircle, AlertTriangle, Info, X } from 'lucide-react';
 
 const ToastContext = createContext(null);
 
 export const ToastProvider = ({ children }) => {
   const [toasts, setToasts] = useState([]);
+  const [dialogContainers, setDialogContainers] = useState([]);
+
+  const registerDialog = useCallback((dialog) => {
+    setDialogContainers((prev) => [...prev, dialog]);
+    return () => setDialogContainers((prev) => prev.filter((item) => item !== dialog));
+  }, []);
 
   const showToast = useCallback((message, type = 'success', duration = 3500) => {
     const id = Date.now() + Math.random();
@@ -27,10 +34,10 @@ export const ToastProvider = ({ children }) => {
   const info = useCallback((msg, duration) => showToast(msg, 'info', duration), [showToast]);
 
   return (
-    <ToastContext.Provider value={{ showToast, success, error, warning, info, removeToast }}>
+    <ToastContext.Provider value={{ showToast, success, error, warning, info, removeToast, registerDialog }}>
       {children}
       {/* Toast Container */}
-      <div className="fixed bottom-5 right-5 z-50 flex flex-col gap-2 max-w-sm w-full pointer-events-none">
+      {createPortal(<div aria-live="polite" className="fixed bottom-5 right-5 z-50 flex flex-col gap-2 max-w-sm w-full pointer-events-none">
         {toasts.map((toast) => {
           const icons = {
             success: <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0" />,
@@ -56,6 +63,7 @@ export const ToastProvider = ({ children }) => {
                 {toast.message}
               </div>
               <button
+                aria-label="Đóng thông báo"
                 onClick={() => removeToast(toast.id)}
                 className="text-slate-400 hover:text-slate-600 transition-colors p-0.5 rounded cursor-pointer"
               >
@@ -64,7 +72,7 @@ export const ToastProvider = ({ children }) => {
             </div>
           );
         })}
-      </div>
+      </div>, dialogContainers.at(-1) || document.body)}
     </ToastContext.Provider>
   );
 };

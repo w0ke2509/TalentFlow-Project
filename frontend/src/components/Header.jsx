@@ -5,7 +5,7 @@ import { useAuth } from "../context/AuthContext";
 const ROLE_META = {
   admin: { label: "Quản trị", className: "bg-indigo-50 text-indigo-700 border-indigo-200" },
   hr: { label: "Nhân sự", className: "bg-teal-50 text-teal-700 border-teal-200" },
-  interviewer: { label: "Trưởng phòng", className: "bg-amber-50 text-amber-800 border-amber-200" },
+  interviewer: { label: "Interviewer", className: "bg-amber-50 text-amber-800 border-amber-200" },
   employee: { label: "Nhân viên", className: "bg-slate-100 text-slate-700 border-slate-200" }
 };
 
@@ -75,6 +75,7 @@ export const Header = ({ currentTabTitle }) => {
 
         <button
           type="button"
+          aria-label="Đăng xuất"
           onClick={logout}
           className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-slate-600 hover:text-rose-600 hover:bg-rose-50 border border-slate-200 hover:border-rose-200 rounded-xl transition-colors"
         >

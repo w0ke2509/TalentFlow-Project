@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Modal } from "../components/ui/Modal";
 import { api } from "../services/api";
 import { useToast } from "../context/ToastContext";
 import { Badge } from "../components/ui/Badge";
@@ -39,7 +40,7 @@ const Employees = ({ focusEmployee, onNavigate }) => {
   const ROLE_LABELS = {
     admin: "Quản trị",
     hr: "Nhân sự",
-    interviewer: "Trưởng phòng",
+    interviewer: "Interviewer",
     employee: "Nhân viên"
   };
 
@@ -386,13 +387,13 @@ const Employees = ({ focusEmployee, onNavigate }) => {
                     </td>
                     <td className="py-3.5 px-5 text-right">
                       <div className="flex items-center justify-end gap-1.5">
-                        <button
+                        <button aria-label="Sửa nhân viên"
                           onClick={() => handleOpenEditEmp(emp)}
                           className="p-1.5 text-slate-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg cursor-pointer"
                         >
                           <Edit3 className="w-3.5 h-3.5" />
                         </button>
-                        <button
+                        <button aria-label="Xóa nhân viên"
                           onClick={() => setDeleteConfirm({ isOpen: true, type: "employee", id: emp._id, name: emp.fullName })}
                           className="p-1.5 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg cursor-pointer"
                         >
@@ -474,13 +475,13 @@ const Employees = ({ focusEmployee, onNavigate }) => {
 
       {/* Modal Thêm/Sửa Employee */}
       {isOpenEmpModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-xs animate-in fade-in">
+        <Modal label="Thông tin nhân viên" onClose={() => setIsOpenEmpModal(false)} className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-xs animate-in fade-in">
           <div className="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-100">
             <div className="flex items-center justify-between pb-3 border-b border-slate-100">
               <h3 className="font-bold text-sm text-slate-900">
                 {editingEmpId ? "Cập Nhật Thông Tin Nhân Viên" : "Tiếp Nhận Nhân Viên Mới"}
               </h3>
-              <button onClick={() => setIsOpenEmpModal(false)} className="text-slate-400 hover:text-slate-600 p-1">
+              <button aria-label="Đóng" onClick={() => setIsOpenEmpModal(false)} className="text-slate-400 hover:text-slate-600 p-1">
                 <X className="w-4 h-4" />
               </button>
             </div>
@@ -527,7 +528,7 @@ const Employees = ({ focusEmployee, onNavigate }) => {
                 >
                   <option value="admin">Quản trị</option>
                   <option value="hr">Nhân sự</option>
-                  <option value="interviewer">Trưởng phòng</option>
+                  <option value="interviewer">Interviewer</option>
                   <option value="employee">Nhân viên</option>
                 </select>
               </div>
@@ -631,18 +632,18 @@ const Employees = ({ focusEmployee, onNavigate }) => {
               </div>
             </form>
           </div>
-        </div>
+        </Modal>
       )}
 
       {/* Modal Thêm/Sửa Department */}
       {isOpenDeptModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-xs animate-in fade-in">
+        <Modal label="Thông tin phòng ban" onClose={() => setIsOpenDeptModal(false)} className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-xs animate-in fade-in">
           <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-100">
             <div className="flex items-center justify-between pb-3 border-b border-slate-100">
               <h3 className="font-bold text-sm text-slate-900">
                 {editingDeptId ? "Cập Nhật Phòng Ban" : "Thêm Phòng Ban Mới"}
               </h3>
-              <button onClick={() => setIsOpenDeptModal(false)} className="text-slate-400 hover:text-slate-600 p-1">
+              <button aria-label="Đóng" onClick={() => setIsOpenDeptModal(false)} className="text-slate-400 hover:text-slate-600 p-1">
                 <X className="w-4 h-4" />
               </button>
             </div>
@@ -711,12 +712,12 @@ const Employees = ({ focusEmployee, onNavigate }) => {
               </div>
             </form>
           </div>
-        </div>
+        </Modal>
       )}
 
       {/* Modal Xem Danh Sách Nhân Viên Thuộc Phòng Ban Được Chọn */}
       {selectedDeptForModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-xs animate-in fade-in">
+        <Modal label="Nhân viên trong phòng ban" onClose={() => setSelectedDeptForModal(null)} className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-xs animate-in fade-in">
           <div className="bg-white rounded-2xl max-w-2xl w-full p-6 shadow-2xl border border-slate-100 space-y-4 max-h-[85vh] flex flex-col">
             <div className="flex items-start justify-between pb-3 border-b border-slate-100">
               <div className="flex items-center gap-3">
@@ -737,7 +738,7 @@ const Employees = ({ focusEmployee, onNavigate }) => {
                   </p>
                 </div>
               </div>
-              <button
+              <button aria-label="Đóng"
                 onClick={() => setSelectedDeptForModal(null)}
                 className="text-slate-400 hover:text-slate-600 p-1.5 rounded-lg hover:bg-slate-100 transition-colors"
               >
@@ -814,7 +815,7 @@ const Employees = ({ focusEmployee, onNavigate }) => {
               </button>
             </div>
           </div>
-        </div>
+        </Modal>
       )}
 
       {/* Confirm Delete Dialog */}

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo } from "react";
+import { Modal } from "../components/ui/Modal";
 import { api } from "../services/api";
 import { useToast } from "../context/ToastContext";
 import { useAuth } from "../context/AuthContext";
@@ -917,7 +918,7 @@ const Interviews = ({ focusDate, onNavigate }) => {
 
       {/* ================== MODAL XEM CHI TIẾT KHI CLICK VÀO LỊCH TUẦN ================== */}
       {selectedDetail && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-xs animate-in fade-in">
+        <Modal label="Chi tiết phỏng vấn" onClose={() => setSelectedDetail(null)} className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-xs animate-in fade-in">
           <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-100 space-y-4">
             <div className="flex items-start justify-between gap-3 pb-3 border-b border-slate-100">
               <div>
@@ -931,7 +932,7 @@ const Interviews = ({ focusDate, onNavigate }) => {
                   {selectedDetail.applicationId?.positionId?.title || "Vị trí tuyển dụng"}
                 </p>
               </div>
-              <button
+              <button aria-label="Đóng"
                 onClick={() => setSelectedDetail(null)}
                 className="text-slate-400 hover:text-slate-600 p-1 cursor-pointer"
               >
@@ -1087,19 +1088,19 @@ const Interviews = ({ focusDate, onNavigate }) => {
               </div>
             </div>
           </div>
-        </div>
+        </Modal>
       )}
 
       {/* ================== MODAL THÊM LỊCH MỚI / CHẤM ĐIỂM ================== */}
       {isOpenModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-xs animate-in fade-in">
+        <Modal label="Lịch phỏng vấn" onClose={() => setIsOpenModal(false)} className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-xs animate-in fade-in">
           <div className="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-100">
             <div className="flex items-center justify-between pb-3 border-b border-slate-100">
               <h3 className="font-bold text-sm text-slate-900 flex items-center gap-2">
                 {editingId ? <Edit3 className="w-4 h-4 text-indigo-600" /> : <Plus className="w-4 h-4 text-indigo-600" />}
                 {editingId ? "Đánh Giá & Chấm Điểm Phỏng Vấn" : "Lên Lịch Phỏng Vấn Mới"}
               </h3>
-              <button onClick={() => setIsOpenModal(false)} className="text-slate-400 hover:text-slate-600 p-1 cursor-pointer">
+              <button aria-label="Đóng" onClick={() => setIsOpenModal(false)} className="text-slate-400 hover:text-slate-600 p-1 cursor-pointer">
                 <X className="w-4 h-4" />
               </button>
             </div>
@@ -1256,7 +1257,7 @@ const Interviews = ({ focusDate, onNavigate }) => {
               </div>
             </form>
           </div>
-        </div>
+        </Modal>
       )}
 
       {/* Confirm Delete */}

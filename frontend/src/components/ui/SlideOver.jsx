@@ -1,11 +1,12 @@
 import React from "react";
 import { X } from "lucide-react";
+import { Modal } from "./Modal";
 
 export const SlideOver = ({ isOpen, onClose, title, subtitle, children, footer, width = "max-w-xl" }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 overflow-hidden bg-slate-900/40 backdrop-blur-xs animate-in fade-in">
+    <Modal label={title} onClose={onClose} className="fixed inset-0 z-50 overflow-hidden bg-slate-900/40 backdrop-blur-xs animate-in fade-in">
       <div className="absolute inset-0" onClick={onClose} />
       <div className="fixed inset-y-0 right-0 flex max-w-full pl-10">
         <div className={"w-screen " + width + " bg-white shadow-2xl border-l border-slate-200 flex flex-col animate-in slide-in-from-right duration-300"}>
@@ -15,6 +16,7 @@ export const SlideOver = ({ isOpen, onClose, title, subtitle, children, footer, 
               {subtitle && <p className="text-xs text-slate-500 mt-1">{subtitle}</p>}
             </div>
             <button
+              aria-label="Đóng chi tiết"
               onClick={onClose}
               className="text-slate-400 hover:text-slate-600 p-1.5 rounded-xl hover:bg-slate-200/60 transition-colors cursor-pointer"
             >
@@ -33,7 +35,7 @@ export const SlideOver = ({ isOpen, onClose, title, subtitle, children, footer, 
           )}
         </div>
       </div>
-    </div>
+    </Modal>
   );
 };
 

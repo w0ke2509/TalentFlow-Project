@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo } from "react";
+import { Modal } from "../components/ui/Modal";
 import { api } from "../services/api";
 import { useAuth } from "../context/AuthContext";
 import { useToast } from "../context/ToastContext";
@@ -465,8 +466,8 @@ const Applications = ({ onNavigate }) => {
       </div>
 
       {offerApplication && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50" role="presentation">
-          <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-100" role="dialog" aria-modal="true" aria-labelledby="offer-title">
+        <Modal label="Đề nghị làm việc" onClose={() => setOfferApplication(null)} busy={offerSaving} className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50">
+          <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-100">
             <div className="flex items-center justify-between pb-3 border-b border-slate-100">
               <h3 id="offer-title" className="font-bold text-sm text-slate-900">Đề nghị làm việc</h3>
               <button type="button" onClick={() => setOfferApplication(null)} className="text-slate-400 hover:text-slate-600 p-1" aria-label="Đóng"><X className="w-4 h-4" /></button>
@@ -498,11 +499,11 @@ const Applications = ({ onNavigate }) => {
               </div>
             </form>
           </div>
-        </div>
+        </Modal>
       )}
 
       {scheduleApplication && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-xs">
+        <Modal label="Đặt lịch phỏng vấn" onClose={() => setScheduleApplication(null)} busy={scheduleSaving} className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-xs">
           <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-100">
             <div className="flex items-center justify-between pb-3 border-b border-slate-100">
               <h3 className="font-bold text-sm text-slate-900">Đặt lịch phỏng vấn</h3>
@@ -544,16 +545,16 @@ const Applications = ({ onNavigate }) => {
               </div>
             </form>
           </div>
-        </div>
+        </Modal>
       )}
 
       {/* Modal Nộp Hồ Sơ Mới */}
       {isOpenModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-xs animate-in fade-in">
+        <Modal label="Nộp hồ sơ mới" onClose={() => setIsOpenModal(false)} className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-xs animate-in fade-in">
           <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-100">
             <div className="flex items-center justify-between pb-3 border-b border-slate-100">
               <h3 className="font-bold text-sm text-slate-900">Tiếp Nhận Đơn Ứng Tuyển Mới</h3>
-              <button onClick={() => setIsOpenModal(false)} className="text-slate-400 hover:text-slate-600 p-1">
+              <button aria-label="Đóng" onClick={() => setIsOpenModal(false)} className="text-slate-400 hover:text-slate-600 p-1">
                 <X className="w-4 h-4" />
               </button>
             </div>
@@ -650,7 +651,7 @@ const Applications = ({ onNavigate }) => {
               </div>
             </form>
           </div>
-        </div>
+        </Modal>
       )}
 
       {/* Confirm Delete Dialog */}

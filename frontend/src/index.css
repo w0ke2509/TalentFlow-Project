@@ -20,6 +20,10 @@
 }
 
 /* Custom subtle scrollbar */
+.app-dialog::backdrop {
+  background: transparent;
+}
+
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;

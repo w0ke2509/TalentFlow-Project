@@ -76,14 +76,14 @@ const Dashboard = ({ onNavigate }) => {
     applied: "Mới nộp",
     screening: "Sơ loại",
     interview: "Phỏng vấn",
-    accepted: "Gửi offer",
+    accepted: "Gửi đề nghị",
     hired: "Đã tuyển",
     rejected: "Từ chối"
   };
 
-  const chartData = (applicationsByStatus || []).map((item) => ({
-    name: statusMap[item._id] || item._id,
-    count: item.count
+  const chartData = Object.entries(statusMap).map(([status, name]) => ({
+    name,
+    count: (applicationsByStatus || []).find((item) => item._id === status)?.count || 0
   }));
 
   return (
@@ -140,10 +140,10 @@ const Dashboard = ({ onNavigate }) => {
           <div className="flex items-center justify-between mb-4">
             <div>
               <h3 className="font-bold text-sm text-slate-900 tracking-tight">
-                Phễu Tuyển Dụng Hồ Sơ (Recruitment Pipeline)
+                Hồ sơ theo trạng thái
               </h3>
               <p className="text-xs text-slate-400 mt-0.5">
-                Số lượng ứng viên phân bổ qua từng giai đoạn tuyển dụng
+                Số lượng hồ sơ hiện tại ở từng giai đoạn tuyển dụng
               </p>
             </div>
             {onNavigate && (
@@ -223,7 +223,7 @@ const Dashboard = ({ onNavigate }) => {
           </div>
 
           <div className="grid grid-cols-2 gap-2 pt-2 border-t border-slate-100">
-            {chartData.slice(0, 4).map((item, idx) => (
+            {chartData.map((item, idx) => (
               <div key={idx} className="flex items-center gap-1.5 text-xs text-slate-600">
                 <span className="w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: CHART_COLORS[idx % CHART_COLORS.length] }} />
                 <span className="truncate">{item.name}:</span>

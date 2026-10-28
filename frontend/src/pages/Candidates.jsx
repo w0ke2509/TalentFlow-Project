@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Modal } from "../components/ui/Modal";
 import { api } from "../services/api";
 import { useAuth } from "../context/AuthContext";
 import { useToast } from "../context/ToastContext";
@@ -298,7 +299,7 @@ const Candidates = () => {
                   <th className="py-3.5 px-5">Ứng Viên</th>
                   <th className="py-3.5 px-4">Liên Hệ</th>
                   <th className="py-3.5 px-4">Kinh Nghiệm</th>
-                  <th className="py-3.5 px-4">Kỹ Năng (Array Tag)</th>
+                  <th className="py-3.5 px-4">Kỹ Năng</th>
                   <th className="py-3.5 px-4">Trạng Thái</th>
                   <th className="py-3.5 px-5 text-right">Thao Tác</th>
                 </tr>
@@ -308,6 +309,13 @@ const Candidates = () => {
                   <tr
                     key={cand._id}
                     onClick={() => handleViewDetail(cand)}
+                    tabIndex={0}
+                    onKeyDown={(event) => {
+                      if (event.target === event.currentTarget && ["Enter", " "].includes(event.key)) {
+                        event.preventDefault();
+                        handleViewDetail(cand);
+                      }
+                    }}
                     className="hover:bg-slate-50/80 transition-colors cursor-pointer group"
                   >
                     {/* Tên & Avatar */}
@@ -548,13 +556,13 @@ const Candidates = () => {
 
       {/* Modal Create/Edit */}
       {isOpenModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-xs animate-in fade-in">
+        <Modal label="Hồ sơ ứng viên" onClose={() => setIsOpenModal(false)} className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-xs animate-in fade-in">
           <div className="bg-white rounded-2xl max-w-xl w-full p-6 shadow-2xl border border-slate-100 max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between pb-4 border-b border-slate-100">
               <h3 className="font-bold text-base text-slate-900">
                 {editingId ? "Cập Nhật Hồ Sơ Ứng Viên" : "Thêm Ứng Viên Mới"}
               </h3>
-              <button
+              <button aria-label="Đóng"
                 onClick={() => setIsOpenModal(false)}
                 className="text-slate-400 hover:text-slate-600 p-1 rounded-lg"
               >
@@ -691,7 +699,7 @@ const Candidates = () => {
               </div>
             </form>
           </div>
-        </div>
+        </Modal>
       )}
 
       {/* Confirm Delete Dialog */}

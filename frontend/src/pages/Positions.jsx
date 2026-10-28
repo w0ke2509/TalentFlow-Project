@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Modal } from "../components/ui/Modal";
 import { api } from "../services/api";
 import { useAuth } from "../context/AuthContext";
 import { useToast } from "../context/ToastContext";
@@ -463,13 +464,13 @@ const Positions = () => {
 
       {/* Modal Thêm/Sửa Vị Trí */}
       {isOpenModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-xs animate-in fade-in">
+        <Modal label="Vị trí tuyển dụng" onClose={() => setIsOpenModal(false)} className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-xs animate-in fade-in">
           <div className="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-100">
             <div className="flex items-center justify-between pb-3 border-b border-slate-100">
               <h3 className="font-bold text-sm text-slate-900">
                 {editingId ? "Cập Nhật Vị Trí Việc Làm" : "Đăng Tuyển Vị Trí Mới"}
               </h3>
-              <button onClick={() => setIsOpenModal(false)} className="text-slate-400 hover:text-slate-600 p-1">
+              <button aria-label="Đóng" onClick={() => setIsOpenModal(false)} className="text-slate-400 hover:text-slate-600 p-1">
                 <X className="w-4 h-4" />
               </button>
             </div>
@@ -621,7 +622,7 @@ const Positions = () => {
               </div>
             </form>
           </div>
-        </div>
+        </Modal>
       )}
 
       {/* Confirm Delete Dialog */}

@@ -49,7 +49,7 @@ export const exportEmployeesData = (employees) => {
   const ROLE_MAP = {
     admin: 'Quản trị',
     hr: 'Nhân sự',
-    interviewer: 'Trưởng phòng',
+    interviewer: 'Interviewer',
     employee: 'Nhân viên'
   };
   const STATUS_MAP = {
