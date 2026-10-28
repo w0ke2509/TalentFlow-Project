@@ -10,7 +10,6 @@ import Applications from "./pages/Applications";
 import Interviews from "./pages/Interviews";
 import Employees from "./pages/Employees";
 import Reports from "./pages/Reports";
-import MingoGuide from "./pages/MingoGuide";
 import Login from "./pages/Login";
 
 function AppContent() {
@@ -36,8 +35,7 @@ function AppContent() {
     applications: "Quy Trình Tuyển Dụng Kanban",
     interviews: "Điều Phối & Đánh Giá Phỏng Vấn",
     employees: "Quản Lý Nhân Viên & Phòng Ban",
-    reports: "Báo Cáo & Khai Thác Dữ Liệu Aggregation",
-    "mingo-guide": "Thực Nghiệm & Khai Thác Công Cụ Mingo"
+    reports: "Báo Cáo & Khai Thác Dữ Liệu Aggregation"
   };
 
   if (!isAuthenticated) {
@@ -60,8 +58,6 @@ function AppContent() {
         return <Employees key={employeeFocus ? `${employeeFocus.candidateId}:${employeeFocus.positionId}` : "all"} focusEmployee={employeeFocus} onNavigate={navigateTo} />;
       case "reports":
         return <Reports />;
-      case "mingo-guide":
-        return <MingoGuide />;
       default:
         return <Dashboard onNavigate={navigateTo} />;
     }

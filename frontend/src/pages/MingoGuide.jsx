@@ -16,15 +16,15 @@ import { api } from '../services/api';
 
 const comparisonCriteria = [
   {
-    criterion: 'Kiến trúc phần mềm & Công nghệ cốt lõi',
-    compass: 'Cần đối chiếu thông tin kiến trúc từ tài liệu chính thức.',
-    mingo: 'Cần đối chiếu thông tin kiến trúc từ tài liệu chính thức.',
+    criterion: 'Phiên bản thực nghiệm ngày 15/10/2026',
+    compass: '1.52.0 ở phép đo bộ nhớ; 1.53.0 ở các kiểm tra bổ sung và khởi động lại.',
+    mingo: '2026.2.0.0 trên Windows 11, kết nối MongoDB cục bộ.',
     winner: 'tie'
   },
   {
     criterion: 'Mức độ chiếm dụng bộ nhớ (RAM Consumption)',
-    compass: 'Chưa đo trên cùng môi trường và dữ liệu.',
-    mingo: 'Chưa đo trên cùng môi trường và dữ liệu.',
+    compass: 'Working Set: 759,99 MiB với 1 tab; 753,81 MiB với 5 tab trong phiên thực nghiệm.',
+    mingo: 'Working Set: 627,80 MiB với 1 tab; 623,60 MiB với 5 tab trong phiên thực nghiệm.',
     winner: 'tie'
   },
   {
@@ -68,7 +68,7 @@ const testScenarios = [
     explanation: 'Mở Mingo $\\rightarrow$ Add Connection $\\rightarrow$ Nhập Connection String `mongodb://localhost:27017` hoặc Atlas URI. Kiểm tra danh sách database hiển thị đầy đủ database `recruitment_db`.',
     query: `// Kiểm tra ping kết nối trong MongoDB Shell / Mingo Console
 db.runCommand({ ping: 1 });`,
-    expected: '{ ok: 1 } với độ trễ phản hồi < 5ms.'
+    expected: 'Lệnh ping trả { ok: 1 }, xác nhận máy chủ MongoDB phản hồi.'
   },
   {
     id: 2,
@@ -112,7 +112,7 @@ db.candidates.find({
     }
   }
 }).project({ fullName: 1, experience: 1 });`,
-    expected: 'Trả về các document thỏa mãn điều kiện mảng con với thời gian thực thi < 2ms.'
+    expected: 'Trả về các document thỏa mãn đồng thời điều kiện công ty và vị trí trong cùng phần tử experience.'
   },
   {
     id: 5,
@@ -160,7 +160,7 @@ db.applications.aggregate([
   },
   { $sort: { count: -1 } }
 ]);`,
-    expected: 'Trả về bảng thống kê số lượng từng giai đoạn: applied, screening, interview, offer, hired, rejected.'
+    expected: 'Trả về bảng thống kê số lượng từng giai đoạn: applied, screening, interview, accepted, hired, rejected.'
   },
   {
     id: 8,
@@ -244,7 +244,7 @@ db.applications.aggregate([
     explanation: 'Thêm mới một ứng viên trên Web App $\\rightarrow$ Mở Mingo kiểm tra Document xuất hiện. Sau đó sửa email trên Mingo $\\rightarrow$ Nhấn Refresh trên Web App để kiểm tra tính nhất quán.',
     query: `// Query kiểm tra document vừa sửa đổi trên Mingo
 db.candidates.find({ email: /updated/i }).sort({ updatedAt: -1 }).limit(1);`,
-    expected: 'Dữ liệu được cập nhật chuẩn xác không có độ trễ phân tán (Zero-Delay Consistency).'
+    expected: 'Document đã lưu trong MongoDB được hiển thị nhất quán sau khi làm mới dữ liệu trên mỗi giao diện.'
   }
 ];
 
@@ -304,7 +304,7 @@ const MingoGuide = () => {
         <div className="flex items-center gap-2">
           <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            Hướng dẫn Mingo · Chưa xác minh kết nối
+            Hướng dẫn thao tác và thực nghiệm Mingo
           </span>
         </div>
       </div>
@@ -374,13 +374,19 @@ const MingoGuide = () => {
 
       {/* TAB 1: BENCHMARKS & HARDWARE COMPARISON */}
       {activeTab === 'benchmarks' && (
-        <div className="rounded-2xl border border-amber-200 bg-amber-50 p-6 space-y-3">
-          <h3 className="text-base font-bold text-amber-950">Chưa có số liệu đối chuẩn Mingo</h3>
-          <p className="text-sm text-amber-900">
-            Nhóm chưa đo RAM và thời gian khởi động của Mingo và MongoDB Compass trên cùng máy, cùng dữ liệu.
-            Các con số sẽ được bổ sung sau khi chạy thí nghiệm và ghi lại phương pháp đo.
+        <div className="rounded-2xl border border-slate-200 bg-white p-6 space-y-3">
+          <h3 className="text-base font-bold text-slate-900">Kết quả thực nghiệm ngày 15/10/2026</h3>
+          <p className="text-sm text-slate-700">
+            Trên Windows 11, Intel Core i7-14650HX và MongoDB cục bộ, Working Set với một tab
+            là 627,80 MiB ở Mingo 2026.2 và 759,99 MiB ở Compass 1.52.
+            Với năm tab, các giá trị lần lượt là 623,60 MiB và 753,81 MiB.
           </p>
-          <p className="text-xs text-amber-800">Có thể xem quy trình và truy vấn ở các tab bên cạnh. Tab Explain Plan lấy kết quả từ MongoDB của dự án, không phải từ Mingo.</p>
+          <p className="text-sm text-slate-700">
+            Mingo khởi động lại đến khi hiện dữ liệu trung bình 1,631 giây qua ba lần đo.
+            Compass 1.53 đạt màn hình Welcome trung bình 2,048 giây; bước kết nối sau đó là 0,327 giây.
+            Các thời gian được ghi theo điểm kết thúc tương ứng của từng thao tác.
+          </p>
+          <p className="text-xs text-slate-500">Nguồn: hồ sơ thực nghiệm của nhóm ngày 15/10/2026. Đây là số liệu đã ghi nhận; tab Explain Plan chạy trực tiếp trên MongoDB hiện tại.</p>
         </div>
       )}
 
@@ -390,7 +396,7 @@ const MingoGuide = () => {
           <div className="p-5 bg-slate-50/80 border-b border-slate-200 flex items-center justify-between">
             <div>
               <h3 className="font-bold text-slate-900 text-sm">
-                Ma Trận So Sánh Tính Năng Giữa Mingo và MongoDB Compass (Chương 2.5 & 5.6)
+                So Sánh Tính Năng Giữa Mingo và MongoDB Compass
               </h3>
               <p className="text-xs text-slate-500 mt-0.5">
                 Bảng phân tích đối chiếu chuyên sâu các tiêu chuẩn quản trị CSDL NoSQL

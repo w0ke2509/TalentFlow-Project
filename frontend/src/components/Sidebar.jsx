@@ -6,7 +6,6 @@ import {
   Kanban, 
   CalendarCheck, 
   BarChart3, 
-  Database,
   Building2,
   UserCheck,
   ChevronLeft,
@@ -45,7 +44,6 @@ const Sidebar = ({ currentTab, setCurrentTab }) => {
     { id: "interviews", label: "Lịch phỏng vấn", icon: CalendarCheck, roles: ["admin", "hr", "interviewer"] },
     { id: "employees", label: "Nhân viên & Phòng ban", icon: UserCheck, roles: ["admin", "hr"] },
     { id: "reports", label: "Báo cáo & Phân tích", icon: BarChart3, roles: ["admin", "hr"] },
-    { id: "mingo-guide", label: "Khai thác Mingo", icon: Database, roles: ["admin", "hr"] },
   ];
 
   const userRole = user?.role || "employee";
@@ -149,7 +147,7 @@ const Sidebar = ({ currentTab, setCurrentTab }) => {
               <span className="font-mono text-[10px] text-slate-400">v7.0</span>
             </div>
             <div className="text-[10px] text-slate-400 leading-tight">
-              Đồ án CSDL NoSQL • Mingo GUI
+              Đồ án CSDL NoSQL
             </div>
           </>
         )}

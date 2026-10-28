@@ -716,6 +716,36 @@ async function runApiSuite() {
   }, adminToken);
   assert(duplicateAppReq.status === 400, "Không thể tạo hồ sơ đang xử lý trùng ứng viên và vị trí");
 
+  const intakePos = await Position.create({
+    title: "Kiểm thử tiếp nhận hồ sơ", description: "Chỉ bắt đầu từ Mới Nộp",
+    departmentId: dept._id, quantity: 10
+  });
+  for (const initialStatus of ["screening", "interview", "accepted", "hired", "rejected"]) {
+    const intakeCandidate = await Candidate.create({
+      fullName: `Ứng viên kiểm thử ${initialStatus}`,
+      email: `intake.${initialStatus}@test.com`, phone: "0900000000"
+    });
+    const bypassReq = await request("POST", "/api/applications", {
+      candidateId: intakeCandidate._id, positionId: intakePos._id, status: initialStatus
+    }, adminToken);
+    assert(bypassReq.status === 400, `Không tạo hồ sơ mới thẳng vào trạng thái ${initialStatus}`);
+    assert(!await Application.exists({ candidateId: intakeCandidate._id }), `Từ chối ${initialStatus} không sinh hồ sơ trong DB`);
+  }
+  const freshCandidate = await Candidate.create({
+    fullName: "Ứng viên mới đúng quy trình", email: "intake.valid@test.com", phone: "0900000001"
+  });
+  const prefilledOfferReq = await request("POST", "/api/applications", {
+    candidateId: freshCandidate._id, positionId: intakePos._id,
+    offerSalary: 25000000, offerStartDate: new Date(Date.now() + 86400000), offerAccepted: true
+  }, adminToken);
+  assert(prefilledOfferReq.status === 400, "Không cài sẵn đề nghị đã đồng ý khi tạo hồ sơ mới");
+  assert(!await Application.exists({ candidateId: freshCandidate._id }), "Đề nghị sai giai đoạn không tạo document");
+  const freshApplicationReq = await request("POST", "/api/applications", {
+    candidateId: freshCandidate._id, positionId: intakePos._id, source: "Website", score: 80, note: "Hồ sơ mới"
+  }, adminToken);
+  assert(freshApplicationReq.status === 201 && freshApplicationReq.body?.data?.status === "applied", "Tạo hồ sơ hợp lệ bắt đầu tại Mới Nộp");
+  assert(freshApplicationReq.body?.data?.offerAccepted === false && !freshApplicationReq.body?.data?.offerSalary, "Hồ sơ mới chưa có đề nghị làm việc");
+
   const wrongDept = await Department.create({ name: "Phòng kiểm thử khác", code: "OTHER" });
   const wrongDeptEmployeeReq = await request("POST", "/api/employees", {
     fullName: "Nhân viên sai phòng", email: "wrong.dept@test.com",

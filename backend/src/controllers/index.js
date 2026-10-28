@@ -280,6 +280,12 @@ export const getApplications = async (req, res) => {
 export const createApplication = async (req, res) => {
   try {
     const { candidateId, positionId } = req.body;
+    if (req.body.status !== undefined && req.body.status !== 'applied') {
+      return res.status(400).json({ success: false, message: 'Hồ sơ mới phải bắt đầu tại bước Mới Nộp.' });
+    }
+    if (['offerSalary', 'offerStartDate', 'offerNote', 'offerAccepted'].some(field => req.body[field] !== undefined)) {
+      return res.status(400).json({ success: false, message: 'Chỉ có thể lập đề nghị tại bước Gửi Đề Nghị.' });
+    }
     if (!candidateId || !positionId) {
       return res.status(400).json({ success: false, message: 'candidateId và positionId là bắt buộc' });
     }

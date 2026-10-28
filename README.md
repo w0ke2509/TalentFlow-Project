@@ -1,27 +1,93 @@
-# Hệ thống quản lý tuyển dụng nhân viên
+# TalentFlow — Hệ thống quản lý tuyển dụng
 
-Đồ án môn Cơ sở dữ liệu NoSQL: xây dựng ứng dụng tuyển dụng dùng MongoDB và tìm hiểu công cụ Mingo để quản trị, khai thác dữ liệu. Giao diện được viết bằng React; API dùng Node.js, Express và Mongoose.
+Đồ án môn Cơ sở dữ liệu NoSQL, xây dựng ứng dụng tuyển dụng với MongoDB. Frontend dùng React, Vite và Tailwind CSS; backend dùng Node.js, Express và Mongoose. Mingo hoặc MongoDB Compass được dùng riêng để quản trị và thực nghiệm dữ liệu; không cần cài hai công cụ này để chạy web.
 
 ## Chức năng chính
 
-- Quản lý phòng ban, vị trí tuyển dụng, ứng viên và nhân viên.
-- Theo dõi hồ sơ ứng tuyển qua Kanban, đặt lịch và đánh giá phỏng vấn, lập đề nghị làm việc.
-- Xem dashboard, báo cáo và 6 truy vấn tổng hợp MongoDB.
-- Sao lưu và phục hồi 6 collection bằng các script trong `backend/scripts/`.
+- Dashboard thống kê tuyển dụng.
+- Quản lý ứng viên, vị trí tuyển dụng, nhân viên và phòng ban.
+- Theo dõi hồ sơ qua Kanban, đặt lịch và đánh giá phỏng vấn.
+- Lập, sửa đề nghị làm việc và tiếp nhận ứng viên trúng tuyển.
+- Báo cáo bằng MongoDB Aggregation, xuất dữ liệu nhân viên ra Excel.
+- Đăng nhập bằng JWT, phân quyền theo vai trò.
+- Backup và restore bằng script, có snapshot trước khi phục hồi và thử rollback khi có lỗi.
 
-Sáu collection là `departments`, `positions`, `candidates`, `applications`, `interviews` và `employees`.
+Luồng hồ sơ chính:
 
-## Chạy trên máy cá nhân
-
-**Cần có:** Node.js, npm và MongoDB đang chạy. Cấu hình mặc định kết nối `mongodb://localhost:27017/recruitment_db`.
-
-Tại thư mục gốc của dự án:
-
-```bash
-npm run install:all
+```text
+Mới nộp → Sơ loại hồ sơ → Phỏng vấn → Gửi đề nghị → Đã tuyển
+applied      screening    interview     accepted      hired
+                         ↘ Không phù hợp (rejected)
 ```
 
-Nếu chưa có `backend/.env`, tạo từ `backend/.env.example`, sau đó thêm `JWT_SECRET` với một chuỗi bí mật riêng. Có thể sửa `MONGODB_URI` và `PORT` trong cùng tệp. Ví dụ nội dung:
+Hồ sơ mới luôn bắt đầu ở `applied`. API kiểm tra việc chuyển bước dựa trên lịch phỏng vấn, kết quả đánh giá và thông tin đề nghị. Đóng vị trí sẽ chặn nhận hồ sơ mới; hồ sơ đã có tiếp tục được xử lý theo điều kiện nghiệp vụ. Khi tuyển đủ chỉ tiêu, vị trí tự đóng.
+
+## Cấu trúc dự án
+
+```text
+TalentFlow-Project/
+├── package.json                 # Các lệnh chạy chung từ thư mục gốc
+├── backend/
+│   ├── .env.example             # Mẫu cấu hình, cần bổ sung JWT_SECRET
+│   ├── data/                    # 6 tệp JSON mẫu dùng cho seed
+│   ├── scripts/
+│   │   ├── seed.js              # Xóa dữ liệu cũ trong 6 collection và nạp mẫu
+│   │   ├── backup.js            # Xuất JSON và manifest
+│   │   ├── restore.js           # Tiền kiểm, snapshot, phục hồi và hậu kiểm
+│   │   ├── verify_project.js    # Kiểm thử dữ liệu, API và backup/restore
+│   │   └── migrate_passwords.js # Tiện ích bảo trì mật khẩu
+│   └── src/
+│       ├── server.js            # Nạp cấu hình, kết nối DB, mở HTTP server
+│       ├── app.js               # Khởi tạo Express và gắn API
+│       ├── config/              # Kết nối database
+│       ├── routes/              # Endpoint và quyền truy cập
+│       ├── controllers/         # API và nghiệp vụ tuyển dụng
+│       ├── middleware/          # Xác thực JWT, kiểm tra vai trò
+│       ├── models/              # 6 schema Mongoose
+│       └── utils/               # Mật khẩu và thông tin kết nối
+├── frontend/
+│   ├── vite.config.js           # Dev server và proxy /api
+│   └── src/
+│       ├── App.jsx              # Điều hướng các màn hình
+│       ├── pages/               # Dashboard, ứng viên, Kanban, phỏng vấn…
+│       ├── components/          # Sidebar, header, thành phần giao diện
+│       ├── context/             # Trạng thái đăng nhập và thông báo
+│       ├── services/api.js      # Gọi API, gắn token, xử lý hết phiên
+│       ├── hooks/               # Hook dùng chung
+│       └── utils/               # Tiện ích xuất dữ liệu
+└── docs/
+    ├── BAO_CAO_DO_AN_NOSQL.md    # Tài liệu báo cáo trong source
+    ├── aggregation_queries.js   # Truy vấn tổng hợp mẫu
+    └── report_images/           # Ảnh minh họa tài liệu
+```
+
+Request từ giao diện đi qua `services/api.js` → `/api` → middleware xác thực/phân quyền → controller → model Mongoose → MongoDB. Khi sửa nghiệp vụ, bắt đầu từ `backend/src/controllers/index.js`; khi sửa quyền, xem thêm `backend/src/routes/api.js` và `backend/src/middleware/auth.js`.
+
+### Cơ sở dữ liệu
+
+| Collection | Nội dung và quan hệ chính |
+| --- | --- |
+| `departments` | Phòng ban |
+| `positions` | Vị trí tuyển dụng, tham chiếu phòng ban |
+| `candidates` | Thông tin cá nhân, kỹ năng, kinh nghiệm ứng viên |
+| `applications` | Nối ứng viên với vị trí; lưu trạng thái và đề nghị |
+| `interviews` | Lịch, kết quả phỏng vấn; tham chiếu hồ sơ ứng tuyển |
+| `employees` | Nhân viên và tài khoản; tham chiếu phòng ban, vị trí và ứng viên nếu có |
+
+## Cài đặt và chạy trên máy mới
+
+### 1. Chuẩn bị và cấu hình
+
+Cần Node.js **22.12 trở lên**, npm, Git và MongoDB đang chạy, mặc định cổng `27017`.
+
+```powershell
+git clone https://github.com/w0ke2509/TalentFlow-Project.git
+cd TalentFlow-Project
+npm run install:all
+Copy-Item backend/.env.example backend/.env
+```
+
+Nếu đã có `backend/.env`, giữ cấu hình hiện có. Mở tệp này và đặt cấu hình của máy bạn:
 
 ```dotenv
 MONGODB_URI=mongodb://localhost:27017/recruitment_db
@@ -29,57 +95,111 @@ PORT=5000
 JWT_SECRET=thay-bang-chuoi-bi-mat-rieng-cua-ban
 ```
 
-Mở hai cửa sổ terminal tại thư mục gốc:
+Thay giá trị ví dụ của `JWT_SECRET` bằng chuỗi bí mật riêng. Có thể thêm `JWT_EXPIRES_IN` để đổi thời hạn token, mặc định `24h`. Không đưa `.env` lên Git.
 
-```bash
-# Cửa sổ 1: API tại http://localhost:5000
-npm run backend
-```
+### 2. Chuẩn bị dữ liệu — chọn một cách
 
-```bash
-# Cửa sổ 2: giao diện tại http://localhost:5173
-npm run frontend
-```
+**Dùng dữ liệu mẫu:** nếu database được chọn là database mới hoặc có thể xóa dữ liệu, chạy từ thư mục gốc:
 
-Giao diện gọi API qua proxy `/api` của Vite. Nếu đổi cổng backend, hãy cập nhật địa chỉ proxy trong `frontend/vite.config.js`.
-
-### Dữ liệu mẫu
-
-Các tệp mẫu nằm trong `backend/data/`. **Không chạy `npm run seed` trên database đang có dữ liệu cần giữ:** script này xóa toàn bộ bản ghi trong cả 6 collection rồi nạp lại dữ liệu mẫu. Chỉ chạy khi đã trỏ `MONGODB_URI` trong `backend/.env` tới một database thử nghiệm mới và kiểm tra đúng tên database:
-
-```bash
+```powershell
 npm run seed
 ```
 
-Nếu bạn đã có dữ liệu trong `recruitment_db`, bỏ qua bước seed. Tài khoản trong bộ dữ liệu mẫu dùng mật khẩu demo `123456`; chỉ sử dụng trong môi trường học tập nội bộ.
+**Lưu ý:** seed xóa toàn bộ bản ghi của 6 collection rồi nạp lại từ `backend/data/`. Không chạy khi có dữ liệu cần giữ. Dữ liệu mẫu không phải bản dữ liệu mới nhất của máy bàn giao.
 
-## Kiểm tra và sao lưu
+**Dùng dữ liệu bàn giao:** nhận riêng thư mục backup, đặt vào `backend/backup/` và làm theo phần restore bên dưới. Không cần seed trước hoặc sau restore. Không chép backup đè lên `backend/data/`.
 
-```bash
-npm run build
-npm test
+**Máy đã có dữ liệu:** bỏ qua cả seed và restore.
+
+### 3. Chạy ứng dụng
+
+Mở hai terminal tại thư mục gốc:
+
+```powershell
+# Terminal 1 — API
+npm run backend
 ```
 
-`npm run build` tạo gói frontend. `npm test` kiểm tra cấu trúc dữ liệu, hành vi API và quy trình backup/restore trên các database kiểm thử tạm; máy cần có MongoDB hoạt động.
+```powershell
+# Terminal 2 — giao diện
+npm run frontend
+```
 
-```bash
+- Giao diện: <http://localhost:5173>
+- API/health check: <http://localhost:5000/>
+- API nghiệp vụ bắt đầu bằng `/api`.
+
+Vite chuyển `/api` tới `http://localhost:5000`. Nếu đổi cổng backend, sửa cả `PORT` trong `backend/.env` và proxy trong `frontend/vite.config.js`.
+
+### Tài khoản demo và quyền truy cập
+
+Sau khi **seed bộ dữ liệu mẫu**, đăng nhập quản trị bằng email `lethimai.hr@gmail.com`, mật khẩu `123456`. Với database restore, dùng tài khoản có trong bản backup đó. Mật khẩu demo phục vụ học tập nội bộ.
+
+| Vai trò | Phạm vi chính |
+| --- | --- |
+| `admin` | Quản lý các phân hệ, có các quyền xóa dành riêng cho quản trị |
+| `hr` | Quản lý quy trình tuyển dụng, phỏng vấn và nhân sự theo quyền API |
+| `interviewer` | Dashboard, lịch phỏng vấn và chấm điểm; không tự đổi lịch |
+| `employee` | Không có quyền dùng các API quản trị tuyển dụng |
+
+Quyền chi tiết nằm tại `backend/src/routes/api.js`.
+
+## Các lệnh thường dùng
+
+Chạy từ thư mục gốc:
+
+| Lệnh | Công dụng |
+| --- | --- |
+| `npm run install:all` | Cài dependency cho backend và frontend |
+| `npm run backend` | Chạy API |
+| `npm run backend:dev` | Chạy API, tự khởi động lại khi sửa source |
+| `npm run frontend` | Chạy giao diện bằng Vite |
+| `npm run build` | Build giao diện vào `frontend/dist/` |
+| `npm test` | Kiểm thử dữ liệu, API, phân quyền, nghiệp vụ và backup/restore |
+| `npm --prefix frontend run lint` | Kiểm tra source frontend |
+| `npm run backup` | Sao lưu database đang cấu hình |
+| `npm run restore` | Restore bản backup được script tự chọn |
+
+`npm test` cần MongoDB tại `localhost:27017`, dùng database tạm có tiền tố `talentflow_test_` rồi dọn dẹp. Build frontend trước khi test vì bộ kiểm định có kiểm tra gói build.
+
+`npm run build` chỉ tạo gói frontend. Khi triển khai lên máy chủ, cần cấu hình web server phục vụ `frontend/dist/` và chuyển `/api` tới backend.
+
+## Backup và restore
+
+### Sao lưu
+
+Kiểm tra `MONGODB_URI` trong `backend/.env`, rồi chạy:
+
+```powershell
 npm run backup
 ```
 
-Lệnh backup đọc database được chỉ định bởi `MONGODB_URI` và tạo một thư mục mới trong `backend/backup/`. Lệnh `npm run restore` **ghi thay thế dữ liệu của cả 6 collection** trong database đang kết nối, mặc định lấy bản backup gần nhất. Chỉ chạy restore sau khi đã kiểm tra `MONGODB_URI`, thư mục backup và tạo bản sao lưu dữ liệu hiện tại. Script restore tạo snapshot trước khi ghi và thử rollback nếu ghi hoặc hậu kiểm thất bại; snapshot nằm trong `backend/snapshots/`.
+Kết quả nằm trong `backend/backup/backup_<thời_gian>_<mã_ngẫu_nhiên>/`, gồm 6 tệp JSON và `manifest.json`. Đây là bản sao dữ liệu 6 collection ứng dụng, không phải bản dump toàn bộ cấu hình, user và index MongoDB.
 
-`backend/backup/` bị loại khỏi Git vì chứa dữ liệu ứng viên và tài khoản. Nếu đồng đội cần dữ liệu MongoDB hiện tại, gửi riêng folder backup mới nhất qua file ZIP.
+`backend/backup/` và `backend/snapshots/` không được đưa lên Git. Khi bàn giao dữ liệu hiện tại, gửi riêng thư mục backup dưới dạng ZIP.
 
-## Mingo và tài liệu
+### Phục hồi bản bàn giao
 
-Có thể kết nối Mingo hoặc MongoDB Compass tới cùng MongoDB để xem dữ liệu và thử truy vấn. Các truy vấn tổng hợp mẫu nằm tại [docs/aggregation_queries.js](./docs/aggregation_queries.js); trên giao diện có trang **Thực nghiệm & Khai thác công cụ Mingo**. Bản Word nhóm đang chỉnh là `WordDoAnNoSQL.docx`, nằm ngoài repository nên cần gửi riêng. Xem [danh sách công việc còn lại](./README_CONG_VIEC_CON_LAI.md) trước khi nộp.
+1. Giải nén để thư mục backup chứa trực tiếp 6 tệp JSON và `manifest.json`.
+2. Trỏ `MONGODB_URI` tới đúng database cần phục hồi, ưu tiên database mới trên máy nhận.
+3. Nếu database đích có dữ liệu cần giữ, sao lưu trước; tạm dừng ứng dụng trong lúc phục hồi.
+4. Từ thư mục gốc, thay tên thư mục ví dụ bằng đường dẫn thật và chạy:
 
-## Cấu trúc dự án
+```powershell
+node --input-type=module -e "import { performRestore } from './backend/scripts/restore.js'; await performRestore({ backupDir: './backend/backup/backup_YYYYMMDDHHmmss_xxxxx' });"
+```
 
-| Thư mục | Nội dung |
-| --- | --- |
-| `backend/src/` | API, middleware, model và logic nghiệp vụ |
-| `backend/data/` | Dữ liệu JSON mẫu cho 6 collection |
-| `backend/scripts/` | Seed, kiểm thử, backup và restore |
-| `frontend/src/` | Giao diện React |
-| `docs/` | Truy vấn mẫu, báo cáo và ảnh minh chứng |
+Lệnh trên chỉ định rõ bản backup. `npm run restore` không nhận tham số chọn thư mục từ CLI: nó ưu tiên `latest.json` nếu đường dẫn còn tồn tại, rồi tìm thư mục `backup_*` mới nhất. Khi chuyển máy, nên chỉ định rõ bản cần restore bằng lệnh trên.
+
+Restore **thay thế dữ liệu cả 6 collection** trong database đích. Script kiểm tra tệp đầu vào, tạo snapshot trước khi ghi, hậu kiểm và thử rollback nếu ghi hoặc hậu kiểm lỗi. Snapshot được giữ tại `backend/snapshots/` để kiểm tra hoặc phục hồi thủ công khi cần.
+
+## Tài liệu và xử lý lỗi thường gặp
+
+- [Báo cáo Markdown](docs/BAO_CAO_DO_AN_NOSQL.md).
+- [Truy vấn Aggregation mẫu](docs/aggregation_queries.js), dùng `$group`, `$cond`, `$project`, `$lookup` và các toán tử khác.
+- Mục **Khai thác Mingo** đã bỏ khỏi menu web; thực nghiệm Mingo/Compass thực hiện bằng công cụ riêng.
+- Không kết nối được database: kiểm tra dịch vụ MongoDB và `MONGODB_URI`.
+- Đăng nhập báo thiếu `JWT_SECRET`: bổ sung vào `backend/.env`, khởi động lại backend.
+- Giao diện không gọi được API: kiểm tra backend cổng `5000` và proxy Vite.
+- Không đăng nhập được trên máy mới: kiểm tra đã seed hoặc restore đúng database và đúng tài khoản.
+- Nhận `401` do token hết hạn: đăng nhập lại. Nhận `403`: kiểm tra vai trò tài khoản.
