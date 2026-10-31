@@ -362,7 +362,7 @@ const Positions = () => {
 
               {/* Footer Thẻ: Lương (Trái) & Nút thao tác (Phải) */}
               <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
-                <div className="font-bold text-sm text-emerald-700">
+                <div className="font-mono tabular-nums font-bold text-sm text-emerald-700">
                   {displaySalary(pos)}
                 </div>
                 <div className="flex items-center gap-1">
@@ -412,7 +412,7 @@ const Positions = () => {
                       {pos.hiredCount || 0}/{pos.quantity || 1}
                     </span>
                   </td>
-                  <td className="py-3.5 px-4 font-semibold text-emerald-700">
+                  <td className="font-mono tabular-nums py-3.5 px-4 font-semibold text-emerald-700">
                     {displaySalary(pos)}
                   </td>
                   <td className="py-3.5 px-4">
@@ -529,7 +529,7 @@ const Positions = () => {
                   step="1"
                   value={formData.quantity}
                   onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}
-                  className="w-full px-3 py-2 border border-slate-200 rounded-xl"
+                  className="font-mono tabular-nums w-full px-3 py-2 border border-slate-200 rounded-xl"
                 />
               </div>
 
@@ -565,7 +565,7 @@ const Positions = () => {
                     step="1000000"
                     value={formData.salaryMin}
                     onChange={(e) => setFormData({ ...formData, salaryMin: e.target.value })}
-                    className="w-full px-3 py-2 border border-slate-200 rounded-xl"
+                    className="font-mono tabular-nums w-full px-3 py-2 border border-slate-200 rounded-xl"
                   />
                 </div>
 
@@ -576,7 +576,7 @@ const Positions = () => {
                     step="1000000"
                     value={formData.salaryMax}
                     onChange={(e) => setFormData({ ...formData, salaryMax: e.target.value })}
-                    className="w-full px-3 py-2 border border-slate-200 rounded-xl"
+                    className="font-mono tabular-nums w-full px-3 py-2 border border-slate-200 rounded-xl"
                   />
                 </div>
               </div>

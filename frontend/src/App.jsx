@@ -79,7 +79,7 @@ function AppContent() {
             )}
           </select>
         </nav>
-        <div className="p-4 md:p-8 flex-1 w-full max-w-7xl mx-auto">
+        <div className={`p-4 md:p-8 flex-1 w-full mx-auto ${safeTab === "applications" ? "max-w-none" : "max-w-7xl"}`}>
           {renderContent()}
         </div>
       </main>

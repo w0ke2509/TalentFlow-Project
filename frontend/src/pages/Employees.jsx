@@ -369,10 +369,10 @@ const Employees = ({ focusEmployee, onNavigate }) => {
                         {emp.departmentId?.name || "Phòng ban"}
                       </div>
                     </td>
-                    <td className="py-3.5 px-4 font-bold text-emerald-700">
+                    <td className="font-mono tabular-nums py-3.5 px-4 font-bold text-emerald-700">
                       {(emp.officialSalary || 0).toLocaleString("vi-VN")} VNĐ
                     </td>
-                    <td className="py-3.5 px-4 text-slate-500">
+                    <td className="font-mono tabular-nums py-3.5 px-4 text-slate-500">
                       {emp.startDate ? new Date(emp.startDate).toLocaleDateString("vi-VN") : "N/A"}
                     </td>
                     <td className="py-3.5 px-4">
@@ -577,7 +577,7 @@ const Employees = ({ focusEmployee, onNavigate }) => {
                     step="1000000"
                     value={empForm.officialSalary}
                     onChange={(e) => setEmpForm({ ...empForm, officialSalary: e.target.value })}
-                    className="w-full px-3 py-2 border border-slate-200 rounded-xl"
+                    className="font-mono tabular-nums w-full px-3 py-2 border border-slate-200 rounded-xl"
                   />
                 </div>
 
@@ -587,7 +587,7 @@ const Employees = ({ focusEmployee, onNavigate }) => {
                     type="date"
                     value={empForm.startDate}
                     onChange={(e) => setEmpForm({ ...empForm, startDate: e.target.value })}
-                    className="w-full px-3 py-2 border border-slate-200 rounded-xl"
+                    className="font-mono tabular-nums w-full px-3 py-2 border border-slate-200 rounded-xl"
                   />
                 </div>
 
@@ -790,10 +790,10 @@ const Employees = ({ focusEmployee, onNavigate }) => {
                         </div>
 
                         <div className="text-right shrink-0">
-                          <div className="text-xs font-bold text-emerald-700">
+                          <div className="font-mono tabular-nums text-xs font-bold text-emerald-700">
                             {(emp.officialSalary || 0).toLocaleString("vi-VN")} VNĐ
                           </div>
-                          <div className="text-[10px] text-slate-400 mt-0.5">
+                          <div className="font-mono tabular-nums text-[10px] text-slate-400 mt-0.5">
                             Bắt đầu: {emp.startDate ? new Date(emp.startDate).toLocaleDateString("vi-VN") : "N/A"}
                           </div>
                         </div>

@@ -10,6 +10,7 @@ import {
   Briefcase, 
   Star, 
   Trash2,
+  MoreHorizontal,
   ChevronDown,
   UserCheck,
   UserPlus,
@@ -71,6 +72,42 @@ const defaultInterviewTime = () => {
 };
 
 const Applications = ({ onNavigate }) => {
+  useEffect(() => {
+    const dismissOutsideActions = (event) => {
+      document.querySelectorAll("details[data-card-actions][open]").forEach((menu) => {
+        if (!menu.contains(event.target)) menu.open = false;
+      });
+    };
+    document.addEventListener("pointerdown", dismissOutsideActions);
+    document.addEventListener("focusin", dismissOutsideActions);
+    return () => {
+      document.removeEventListener("pointerdown", dismissOutsideActions);
+      document.removeEventListener("focusin", dismissOutsideActions);
+    };
+  }, []);
+
+  const closeCardActions = (button) => {
+    const menu = button.closest("details");
+    menu.open = false;
+    menu.querySelector("summary").focus();
+  };
+
+  const handleActionsKeyDown = (event) => {
+    const menu = event.currentTarget;
+    const items = Array.from(menu.querySelectorAll('[role="menuitem"]'));
+    if (event.key === "Escape") {
+      event.preventDefault();
+      menu.open = false;
+      menu.querySelector("summary").focus();
+    } else if (["ArrowDown", "ArrowUp", "Home", "End"].includes(event.key)) {
+      event.preventDefault();
+      menu.open = true;
+      const current = items.indexOf(document.activeElement);
+      const next = event.key === "Home" ? 0 : event.key === "End" ? items.length - 1
+        : event.key === "ArrowDown" ? (current + 1) % items.length : (current <= 0 ? items.length : current) - 1;
+      items[next]?.focus();
+    }
+  };
   const { user } = useAuth();
   const [applications, setApplications] = useState([]);
   const [candidates, setCandidates] = useState([]);
@@ -321,7 +358,7 @@ const Applications = ({ onNavigate }) => {
           return (
             <div
               key={col.id}
-              className={"bg-slate-100/70 p-3 rounded-2xl border border-slate-200/80 flex flex-col min-h-[500px] min-w-[260px] flex-1 border-t-4 " + col.accentColor}
+              className={"bg-slate-100/70 p-3 rounded-2xl border border-slate-200/80 flex flex-col min-h-[500px] min-w-[270px] flex-1 border-t-4 " + col.accentColor}
             >
               {/* Cột Header */}
               <div className="flex items-center justify-between pb-3 border-b border-slate-200/60 mb-3 px-1">
@@ -348,22 +385,46 @@ const Applications = ({ onNavigate }) => {
                     >
                       {/* Tên ứng viên */}
                       <div className="flex items-start justify-between gap-2">
-                        <div>
-                          <h4 className="font-bold text-xs text-slate-900 group-hover:text-indigo-600 transition-colors">
+                        <div className="min-w-0 flex-1">
+                          <h4 className="font-bold text-xs text-slate-900 group-hover:text-indigo-600 transition-colors break-words">
                             {app.candidateId?.fullName || "Chưa có tên"}
                           </h4>
                           <span className="text-[10px] text-indigo-700 font-medium line-clamp-1">
                             {app.positionId?.title || "Vị trí tuyển dụng"}
                           </span>
                         </div>
-                        {user?.role === "admin" && (
-                          <button
-                            onClick={() => setDeleteConfirm({ isOpen: true, id: app._id, name: app.candidateId?.fullName || "hồ sơ" })}
-                            className="opacity-0 group-hover:opacity-100 text-slate-400 hover:text-rose-600 transition-opacity p-1 cursor-pointer"
-                            title="Xóa hồ sơ"
-                          >
-                            <Trash2 className="w-3 h-3" />
-                          </button>
+                        {(colIdx < 4 || user?.role === "admin") && (
+                          <details data-card-actions className="relative shrink-0" onKeyDown={handleActionsKeyDown}
+                            onToggle={(event) => {
+                              const menu = event.currentTarget;
+                              if (menu.open) {
+                                document.querySelectorAll("details[data-card-actions][open]").forEach((other) => {
+                                  if (other !== menu) other.open = false;
+                                });
+                                if (document.activeElement === menu.querySelector("summary")) menu.querySelector('[role="menuitem"]')?.focus();
+                              }
+                            }}>
+                            <summary aria-label={`Thao tác hồ sơ ${app.candidateId?.fullName || "chưa có tên"}`} aria-haspopup="menu"
+                              className="flex h-11 w-11 list-none items-center justify-center rounded-lg text-slate-500 hover:bg-slate-100 hover:text-slate-800 focus-visible:outline-2 focus-visible:outline-indigo-600 cursor-pointer [&::-webkit-details-marker]:hidden">
+                              <MoreHorizontal className="w-4 h-4" />
+                            </summary>
+                            <div role="menu" aria-label="Thao tác hồ sơ" className="absolute right-0 top-full z-20 mt-1 w-44 rounded-lg border border-slate-200 bg-white p-1 shadow-lg">
+                              {colIdx < 4 && (
+                                <button type="button" role="menuitem" tabIndex={-1}
+                                  onClick={(event) => { closeCardActions(event.currentTarget); requestStatusChange(app, "rejected"); }}
+                                  className="flex min-h-11 w-full items-center rounded-md px-3 text-left text-xs font-semibold text-slate-700 hover:bg-slate-100 focus-visible:bg-slate-100 focus-visible:outline-2 focus-visible:outline-indigo-600 cursor-pointer">
+                                  Từ chối hồ sơ
+                                </button>
+                              )}
+                              {user?.role === "admin" && (
+                                <button type="button" role="menuitem" tabIndex={-1}
+                                  onClick={(event) => { closeCardActions(event.currentTarget); setDeleteConfirm({ isOpen: true, id: app._id, name: app.candidateId?.fullName || "hồ sơ" }); }}
+                                  className="flex min-h-11 w-full items-center gap-2 rounded-md px-3 text-left text-xs font-semibold text-rose-700 hover:bg-rose-50 focus-visible:bg-rose-50 focus-visible:outline-2 focus-visible:outline-rose-600 cursor-pointer">
+                                  <Trash2 className="w-3.5 h-3.5" /> Xóa hồ sơ
+                                </button>
+                              )}
+                            </div>
+                          </details>
                         )}
                       </div>
 
@@ -372,7 +433,7 @@ const Applications = ({ onNavigate }) => {
                         <span className="px-1.5 py-0.5 bg-slate-100 rounded text-[10px] font-medium text-slate-600">
                           {app.source || "Website"}
                         </span>
-                        <span className="font-bold text-slate-700 flex items-center gap-1">
+                        <span className="font-mono tabular-nums font-bold text-slate-700 flex items-center gap-1">
                           <Star className="w-3 h-3 text-amber-500 fill-amber-500" />
                           {app.score || 0}/100
                         </span>
@@ -381,7 +442,7 @@ const Applications = ({ onNavigate }) => {
                       {/* Ngày nộp hồ sơ và lịch phỏng vấn là hai mốc khác nhau */}
                       {(["applied", "screening", "interview"].includes(app.status) && pendingInterviewByApplication.has(app._id)) && (
                         <button type="button" onClick={() => onNavigate?.("interviews", { date: pendingInterviewByApplication.get(app._id).scheduledAt })}
-                          className="text-[10px] font-semibold text-teal-700 hover:underline text-left cursor-pointer">
+                          className="font-mono tabular-nums text-[10px] font-semibold text-teal-700 hover:underline text-left cursor-pointer">
                           Lịch PV: {new Date(pendingInterviewByApplication.get(app._id).scheduledAt).toLocaleString("vi-VN", {
                             day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit"
                           })}
@@ -415,7 +476,7 @@ const Applications = ({ onNavigate }) => {
                             <ArrowLeft className="w-3 h-3" />
                           </button>
                         )}
-                        <span className="text-[9px] text-slate-400 font-medium">
+                        <span className="font-mono tabular-nums text-[9px] text-slate-400 font-medium">
                           Nộp: {new Date(app.appliedAt).toLocaleDateString("vi-VN")}
                         </span>
                         {colIdx < 4 && (
@@ -428,15 +489,6 @@ const Applications = ({ onNavigate }) => {
                           </button>
                         )}
                       </div>
-
-                      {colIdx < 4 && (
-                        <button
-                          onClick={() => requestStatusChange(app, "rejected")}
-                          className="w-full text-[10px] font-semibold text-rose-600 hover:text-rose-700 hover:bg-rose-50 rounded-md py-1 cursor-pointer"
-                        >
-                          Từ chối hồ sơ
-                        </button>
-                      )}
 
                       {app.status === "rejected" && (
                         <button
@@ -477,12 +529,12 @@ const Applications = ({ onNavigate }) => {
               <label className="block font-semibold text-slate-700">Lương đề nghị (VND/tháng) *
                 <input type="number" required min="1" step="1" value={offerForm.offerSalary}
                   onChange={(e) => setOfferForm({ ...offerForm, offerSalary: e.target.value, offerAccepted: false })}
-                  className="mt-1 w-full px-3 py-2 border border-slate-200 rounded-xl" />
+                  className="font-mono tabular-nums mt-1 w-full px-3 py-2 border border-slate-200 rounded-xl" />
               </label>
               <label className="block font-semibold text-slate-700">Ngày nhận việc *
                 <input type="date" required value={offerForm.offerStartDate}
                   onInput={(e) => setOfferForm({ ...offerForm, offerStartDate: e.target.value, offerAccepted: false })}
-                  className="mt-1 w-full px-3 py-2 border border-slate-200 rounded-xl" />
+                  className="font-mono tabular-nums mt-1 w-full px-3 py-2 border border-slate-200 rounded-xl" />
               </label>
               <label className="block font-semibold text-slate-700">Ghi chú đề nghị
                 <textarea value={offerForm.offerNote} onChange={(e) => setOfferForm({ ...offerForm, offerNote: e.target.value })}
@@ -517,7 +569,7 @@ const Applications = ({ onNavigate }) => {
                 <label className="block font-semibold text-slate-700 mb-1">Ngày và giờ phỏng vấn *</label>
                 <input type="datetime-local" required value={scheduleForm.scheduledAt}
                   onChange={(e) => setScheduleForm({ ...scheduleForm, scheduledAt: e.target.value })}
-                  className="w-full px-3 py-2 border border-slate-200 rounded-xl" />
+                  className="font-mono tabular-nums w-full px-3 py-2 border border-slate-200 rounded-xl" />
               </div>
               <div>
                 <label className="block font-semibold text-slate-700 mb-1">Người phỏng vấn *</label>
@@ -618,7 +670,7 @@ const Applications = ({ onNavigate }) => {
                     max="100"
                     value={formData.score}
                     onChange={(e) => setFormData({ ...formData, score: e.target.value })}
-                    className="w-full px-3 py-2 border border-slate-200 rounded-xl"
+                    className="font-mono tabular-nums w-full px-3 py-2 border border-slate-200 rounded-xl"
                   />
                 </div>
               </div>

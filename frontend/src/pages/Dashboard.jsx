@@ -324,7 +324,7 @@ const Dashboard = ({ onNavigate }) => {
                       </div>
                     </div>
                     <div className="text-right">
-                      <div className="text-xs font-semibold text-slate-700">{dateStr}</div>
+                      <div className="font-mono tabular-nums text-xs font-semibold text-slate-700">{dateStr}</div>
                       <span className="text-[10px] text-slate-400">{iv.location || "Online"}</span>
                     </div>
                   </div>

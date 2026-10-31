@@ -46,9 +46,9 @@ export const Header = ({ currentTabTitle }) => {
           {currentTabTitle || "Hệ Thống Quản Lý Tuyển Dụng"}
         </h2>
         <div className="text-[11px] text-slate-500 font-medium hidden sm:flex items-center gap-2 pt-0.5">
-          <span className="capitalize">{formattedDate}</span>
+          <span className="font-mono tabular-nums capitalize">{formattedDate}</span>
           <span className="text-slate-300">•</span>
-          <span className="font-mono text-xs font-semibold px-2 py-0.5 bg-slate-100 text-slate-700 rounded-md border border-slate-200">
+          <span className="font-mono tabular-nums text-xs font-semibold px-2 py-0.5 bg-slate-100 text-slate-700 rounded-md border border-slate-200">
             {formattedTime}
           </span>
         </div>

@@ -520,7 +520,7 @@ const Candidates = () => {
                       <div className="flex-1 p-3.5 bg-slate-50/80 rounded-xl border border-slate-200/70">
                         <div className="flex items-center justify-between">
                           <h5 className="font-bold text-slate-900">{exp.position}</h5>
-                          <span className="text-[10px] text-slate-400 font-medium">
+                          <span className="font-mono tabular-nums text-[10px] text-slate-400 font-medium">
                             {exp.startDate ? new Date(exp.startDate).getFullYear() : "N/A"} - {exp.endDate ? new Date(exp.endDate).getFullYear() : "Hiện tại"}
                           </span>
                         </div>
@@ -614,7 +614,7 @@ const Candidates = () => {
                     min="0"
                     value={formData.experienceYears}
                     onChange={(e) => setFormData({ ...formData, experienceYears: e.target.value })}
-                    className="w-full px-3 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500"
+                    className="font-mono tabular-nums w-full px-3 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500"
                   />
                 </div>
 

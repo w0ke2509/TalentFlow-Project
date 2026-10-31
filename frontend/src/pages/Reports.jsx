@@ -412,7 +412,7 @@ const Reports = () => {
                     <p className="text-[11px] text-slate-500">{pos.totalCandidates} hồ sơ tiếp nhận</p>
                   </div>
                   <div className="text-right shrink-0">
-                    <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-bold bg-purple-50 text-purple-700 border border-purple-100">
+                    <span className="font-mono tabular-nums inline-flex items-center px-2 py-0.5 rounded text-xs font-bold bg-purple-50 text-purple-700 border border-purple-100">
                       ★ {pos.avgScore != null ? pos.avgScore.toFixed(1) : 'N/A'}/100
                     </span>
                   </div>
