@@ -7,6 +7,27 @@ import Employee from '../models/Employee.js';
 import { generateToken } from '../middleware/auth.js';
 import { hashPassword, verifyPassword } from '../utils/password.js';
 
+const validateRelativeCalendarDate = (rawInput, fieldLabel) => {
+  const rawDate = typeof rawInput === 'string' ? rawInput.trim() : rawInput;
+  const date = new Date(rawDate);
+  if (!rawDate || Number.isNaN(date.getTime())) {
+    return { error: `${fieldLabel} không hợp lệ.` };
+  }
+  const now = new Date();
+  const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const todayEnd = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59, 999);
+  const todayStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+  if (typeof rawDate === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(rawDate)) {
+    const [y, m, d] = rawDate.split('-').map(Number);
+    const calendarDate = new Date(y, m - 1, d);
+    if (calendarDate.getFullYear() !== y || calendarDate.getMonth() !== m - 1 || calendarDate.getDate() !== d) {
+      return { error: `${fieldLabel} không hợp lệ.` };
+    }
+    return { date, isBeforeToday: rawDate < todayStr, isAfterToday: rawDate > todayStr };
+  }
+  return { date, isBeforeToday: date < todayStart, isAfterToday: date > todayEnd };
+};
+
 // 1. DASHBOARD STATS & AGGREGATION
 export const getDashboardStats = async (req, res) => {
   try {
@@ -372,25 +393,8 @@ export const updateApplicationStatus = async (req, res) => {
       updateData.offerSalary = salary;
     }
     if (offerStartDate !== undefined) {
-      const rawDate = typeof offerStartDate === 'string' ? offerStartDate.trim() : offerStartDate;
-      const date = new Date(rawDate);
-      if (!rawDate || Number.isNaN(date.getTime())) {
-        return res.status(400).json({ success: false, message: 'Ngày nhận việc dự kiến không hợp lệ.' });
-      }
-      const now = new Date();
-      const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-      const todayStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
-      let isBeforeToday = false;
-      if (typeof rawDate === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(rawDate)) {
-        const [y, m, d] = rawDate.split('-').map(Number);
-        const calendarDate = new Date(y, m - 1, d);
-        if (calendarDate.getFullYear() !== y || calendarDate.getMonth() !== m - 1 || calendarDate.getDate() !== d) {
-          return res.status(400).json({ success: false, message: 'Ngày nhận việc dự kiến không hợp lệ.' });
-        }
-        isBeforeToday = rawDate < todayStr;
-      } else {
-        isBeforeToday = date < todayStart;
-      }
+      const { error, date, isBeforeToday } = validateRelativeCalendarDate(offerStartDate, 'Ngày nhận việc dự kiến');
+      if (error) return res.status(400).json({ success: false, message: error });
       const isUnchangedStartDate = previousApplication.offerStartDate && date.getTime() === previousApplication.offerStartDate.getTime();
       if (!isUnchangedStartDate && isBeforeToday) {
         return res.status(400).json({ success: false, message: 'Ngày nhận việc không được trước ngày hiện tại.' });
@@ -1006,6 +1010,13 @@ export const createEmployee = async (req, res) => {
     if (String(position.departmentId) !== String(req.body.departmentId)) {
       return res.status(400).json({ success: false, message: 'Vị trí không thuộc phòng ban đã chọn.' });
     }
+    if (req.body.startDate !== undefined) {
+      const { error, isAfterToday } = validateRelativeCalendarDate(req.body.startDate, 'Ngày nhận việc');
+      if (error) return res.status(400).json({ success: false, message: error });
+      if (isAfterToday) {
+        return res.status(400).json({ success: false, message: 'Ngày nhận việc không được vượt quá ngày hiện tại.' });
+      }
+    }
     const rawPassword = req.body.password || '123456';
     const hashedPassword = await hashPassword(rawPassword);
     const payload = {
@@ -1111,6 +1122,14 @@ export const updateEmployee = async (req, res) => {
     if (!position) return res.status(404).json({ success: false, message: 'Vị trí tuyển dụng không tồn tại' });
     if (String(position.departmentId) !== String(departmentId)) {
       return res.status(400).json({ success: false, message: 'Vị trí không thuộc phòng ban đã chọn.' });
+    }
+    if (req.body.startDate !== undefined) {
+      const { error, date, isAfterToday } = validateRelativeCalendarDate(req.body.startDate, 'Ngày nhận việc');
+      if (error) return res.status(400).json({ success: false, message: error });
+      const isUnchangedStartDate = currentEmployee.startDate && date.getTime() === currentEmployee.startDate.getTime();
+      if (!isUnchangedStartDate && isAfterToday) {
+        return res.status(400).json({ success: false, message: 'Ngày nhận việc không được vượt quá ngày hiện tại.' });
+      }
     }
     const payload = { ...req.body };
     if (payload.password && typeof payload.password === 'string' && payload.password.trim()) {

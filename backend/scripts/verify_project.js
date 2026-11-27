@@ -757,6 +757,13 @@ async function runApiSuite() {
   }, adminToken);
   assert(wrongDeptEmployeeReq.status === 400, "Không thể gán nhân viên vào vị trí thuộc phòng ban khác");
 
+  const futureEmpDate = formatLocalYMD(new Date(Date.now() + 2 * 86400000));
+  const futureStartEmployeeReq = await request("POST", "/api/employees", {
+    fullName: "Nhân viên sai ngày nhận việc", email: "future.emp@test.com",
+    departmentId: dept._id, positionId: pos._id, startDate: futureEmpDate
+  }, adminToken);
+  assert(futureStartEmployeeReq.status === 400, "Không thể tạo nhân viên có ngày nhận việc vượt quá ngày hiện tại");
+
   const deleteLinkedDepartmentReq = await request("DELETE", `/api/departments/${dept._id}`, null, adminToken);
   assert(deleteLinkedDepartmentReq.status === 400, "Không thể xóa phòng ban đang có vị trí liên kết");
   const linkedEmployee = await Employee.create({

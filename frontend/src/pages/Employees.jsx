@@ -24,6 +24,13 @@ import {
 } from "lucide-react";
 import { exportEmployeesData } from "../utils/exportHelper";
 
+const formatLocalDate = (date = new Date()) => {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+};
+
 const Employees = ({ focusEmployee, onNavigate }) => {
   const [activeTab, setActiveTab] = useState("employees"); // employees | departments
   const [employees, setEmployees] = useState([]);
@@ -51,7 +58,7 @@ const Employees = ({ focusEmployee, onNavigate }) => {
     role: "employee",
     departmentId: "",
     positionId: "",
-    startDate: new Date().toISOString().split("T")[0],
+    startDate: formatLocalDate(),
     status: "probation",
     officialSalary: 20000000
   });
@@ -107,7 +114,7 @@ const Employees = ({ focusEmployee, onNavigate }) => {
       role: "employee",
       departmentId,
       positionId: firstPosition?._id || "",
-      startDate: new Date().toISOString().split("T")[0],
+      startDate: formatLocalDate(),
       status: "probation",
       officialSalary: 20000000
     });
@@ -133,6 +140,11 @@ const Employees = ({ focusEmployee, onNavigate }) => {
 
   const handleSubmitEmp = async (e) => {
     e.preventDefault();
+    const todayDate = formatLocalDate();
+    if (!empForm.startDate || empForm.startDate > todayDate) {
+      toast.error("Ngày nhận việc không được vượt quá ngày hiện tại.");
+      return;
+    }
     try {
       const payload = {
         ...empForm,
@@ -582,9 +594,11 @@ const Employees = ({ focusEmployee, onNavigate }) => {
                 </div>
 
                 <div>
-                  <label className="block font-semibold text-slate-700 mb-1">Ngày Bắt Đầu</label>
+                  <label className="block font-semibold text-slate-700 mb-1">Ngày Nhận Việc *</label>
                   <input
                     type="date"
+                    required
+                    max={formatLocalDate()}
                     value={empForm.startDate}
                     onChange={(e) => setEmpForm({ ...empForm, startDate: e.target.value })}
                     className="font-mono tabular-nums w-full px-3 py-2 border border-slate-200 rounded-xl"
