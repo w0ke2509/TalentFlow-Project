@@ -20,8 +20,14 @@
 }
 
 /* Custom subtle scrollbar */
+.app-dialog:modal {
+  overscroll-behavior: contain;
+}
+
 .app-dialog::backdrop {
   background: transparent;
+  overflow: hidden;
+  overscroll-behavior: contain;
 }
 
 ::-webkit-scrollbar {

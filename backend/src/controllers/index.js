@@ -372,8 +372,29 @@ export const updateApplicationStatus = async (req, res) => {
       updateData.offerSalary = salary;
     }
     if (offerStartDate !== undefined) {
-      const date = new Date(offerStartDate);
-      if (!offerStartDate || Number.isNaN(date.getTime())) return res.status(400).json({ success: false, message: 'Ngày nhận việc dự kiến không hợp lệ.' });
+      const rawDate = typeof offerStartDate === 'string' ? offerStartDate.trim() : offerStartDate;
+      const date = new Date(rawDate);
+      if (!rawDate || Number.isNaN(date.getTime())) {
+        return res.status(400).json({ success: false, message: 'Ngày nhận việc dự kiến không hợp lệ.' });
+      }
+      const now = new Date();
+      const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      const todayStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+      let isBeforeToday = false;
+      if (typeof rawDate === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(rawDate)) {
+        const [y, m, d] = rawDate.split('-').map(Number);
+        const calendarDate = new Date(y, m - 1, d);
+        if (calendarDate.getFullYear() !== y || calendarDate.getMonth() !== m - 1 || calendarDate.getDate() !== d) {
+          return res.status(400).json({ success: false, message: 'Ngày nhận việc dự kiến không hợp lệ.' });
+        }
+        isBeforeToday = rawDate < todayStr;
+      } else {
+        isBeforeToday = date < todayStart;
+      }
+      const isUnchangedStartDate = previousApplication.offerStartDate && date.getTime() === previousApplication.offerStartDate.getTime();
+      if (!isUnchangedStartDate && isBeforeToday) {
+        return res.status(400).json({ success: false, message: 'Ngày nhận việc không được trước ngày hiện tại.' });
+      }
       updateData.offerStartDate = date;
     }
     if (offerNote !== undefined) updateData.offerNote = offerNote;

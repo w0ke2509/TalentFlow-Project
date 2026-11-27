@@ -465,75 +465,114 @@ const Positions = () => {
       {/* Modal Thêm/Sửa Vị Trí */}
       {isOpenModal && (
         <Modal label="Vị trí tuyển dụng" onClose={() => setIsOpenModal(false)} className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-xs animate-in fade-in">
-          <div className="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-100">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-100">
+          <div className="bg-white rounded-2xl max-w-xl w-full max-h-[90dvh] flex flex-col overflow-hidden shadow-2xl border border-slate-100">
+            <div className="flex items-center justify-between px-6 pt-5 pb-3 border-b border-slate-100 shrink-0">
               <h3 className="font-bold text-sm text-slate-900">
                 {editingId ? "Cập Nhật Vị Trí Việc Làm" : "Đăng Tuyển Vị Trí Mới"}
               </h3>
-              <button aria-label="Đóng" onClick={() => setIsOpenModal(false)} className="text-slate-400 hover:text-slate-600 p-1">
+              <button type="button" aria-label="Đóng" onClick={() => setIsOpenModal(false)} className="text-slate-400 hover:text-slate-600 p-1 rounded-lg cursor-pointer">
                 <X className="w-4 h-4" />
               </button>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-4 mt-4 text-xs">
-              <div>
-                <label className="block font-semibold text-slate-700 mb-1">Chức Danh Công Việc *</label>
-                <input
-                  type="text"
-                  required
-                  value={formData.title}
-                  onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                  className="w-full px-3 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500/20"
-                  placeholder="Ví dụ: Senior Backend Developer"
-                />
-              </div>
-
-              <div className="grid grid-cols-2 gap-3">
+            <form onSubmit={handleSubmit} className="flex flex-col flex-1 min-h-0 text-xs">
+              <div className="px-6 py-4 space-y-4 overflow-y-auto flex-1">
                 <div>
-                  <label className="block font-semibold text-slate-700 mb-1">Phòng Ban *</label>
-                  <select
+                  <label className="block font-semibold text-slate-700 mb-1">Chức Danh Công Việc *</label>
+                  <input
+                    type="text"
                     required
-                    value={formData.departmentId}
-                    onChange={(e) => setFormData({ ...formData, departmentId: e.target.value })}
-                    className="w-full px-3 py-2 border border-slate-200 rounded-xl"
-                  >
-                    <option value="">-- Chọn phòng ban --</option>
-                    {departments.map((d) => (
-                      <option key={d._id} value={d._id}>
-                        {d.name}
-                      </option>
-                    ))}
-                  </select>
+                    value={formData.title}
+                    onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+                    className="w-full px-3 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500/20"
+                    placeholder="Ví dụ: Senior Backend Developer"
+                  />
                 </div>
 
-                <div>
-                  <label className="block font-semibold text-slate-700 mb-1">Trạng Thái Đăng Tuyển</label>
-                  <select
-                    value={formData.status}
-                    onChange={(e) => setFormData({ ...formData, status: e.target.value })}
-                    className="w-full px-3 py-2 border border-slate-200 rounded-xl"
-                  >
-                    <option value="open">Đang mở (Open)</option>
-                    <option value="closed">Tạm đóng (Closed)</option>
-                    <option value="paused">Tạm ngưng (Paused)</option>
-                  </select>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div>
+                    <label className="block font-semibold text-slate-700 mb-1">Phòng Ban *</label>
+                    <select
+                      required
+                      value={formData.departmentId}
+                      onChange={(e) => setFormData({ ...formData, departmentId: e.target.value })}
+                      className="w-full px-3 py-2 border border-slate-200 rounded-xl"
+                    >
+                      <option value="">-- Chọn phòng ban --</option>
+                      {departments.map((d) => (
+                        <option key={d._id} value={d._id}>
+                          {d.name}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block font-semibold text-slate-700 mb-1">Trạng Thái Đăng Tuyển</label>
+                    <select
+                      value={formData.status}
+                      onChange={(e) => setFormData({ ...formData, status: e.target.value })}
+                      className="w-full px-3 py-2 border border-slate-200 rounded-xl"
+                    >
+                      <option value="open">Đang mở (Open)</option>
+                      <option value="closed">Tạm đóng (Closed)</option>
+                      <option value="paused">Tạm ngưng (Paused)</option>
+                    </select>
+                  </div>
                 </div>
-              </div>
 
-              <div>
-                <label className="block font-semibold text-slate-700 mb-1">Chỉ tiêu tuyển dụng *</label>
-                <input
-                  type="number"
-                  required
-                  min="1"
-                  step="1"
-                  value={formData.quantity}
-                  onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}
-                  className="font-mono tabular-nums w-full px-3 py-2 border border-slate-200 rounded-xl"
-                />
-              </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div>
+                    <label className="block font-semibold text-slate-700 mb-1">Chỉ tiêu tuyển dụng *</label>
+                    <input
+                      type="number"
+                      required
+                      min="1"
+                      step="1"
+                      value={formData.quantity}
+                      onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}
+                      className="font-mono tabular-nums w-full px-3 py-2 border border-slate-200 rounded-xl"
+                    />
+                  </div>
 
-              <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <label className="block font-semibold text-slate-700 mb-1">Cấp bậc</label>
+                    <select
+                      value={formData.level}
+                      onChange={(e) => setFormData({ ...formData, level: e.target.value })}
+                      className="w-full px-3 py-2 border border-slate-200 rounded-xl"
+                    >
+                      {["Intern", "Fresher", "Junior", "Middle", "Senior", "Lead"].map((level) => (
+                        <option key={level} value={level}>{level}</option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div>
+                    <label className="block font-semibold text-slate-700 mb-1">Lương Tối Thiểu (VNĐ)</label>
+                    <input
+                      type="number"
+                      step="1000000"
+                      value={formData.salaryMin}
+                      onChange={(e) => setFormData({ ...formData, salaryMin: e.target.value })}
+                      className="font-mono tabular-nums w-full px-3 py-2 border border-slate-200 rounded-xl"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block font-semibold text-slate-700 mb-1">Lương Tối Đa (VNĐ)</label>
+                    <input
+                      type="number"
+                      step="1000000"
+                      value={formData.salaryMax}
+                      onChange={(e) => setFormData({ ...formData, salaryMax: e.target.value })}
+                      className="font-mono tabular-nums w-full px-3 py-2 border border-slate-200 rounded-xl"
+                    />
+                  </div>
+                </div>
+
                 <div>
                   <label className="block font-semibold text-slate-700 mb-1">Địa điểm</label>
                   <input
@@ -543,79 +582,43 @@ const Positions = () => {
                     className="w-full px-3 py-2 border border-slate-200 rounded-xl"
                   />
                 </div>
+
                 <div>
-                  <label className="block font-semibold text-slate-700 mb-1">Cấp bậc</label>
-                  <select
-                    value={formData.level}
-                    onChange={(e) => setFormData({ ...formData, level: e.target.value })}
+                  <label className="block font-semibold text-slate-700 mb-1">
+                    Yêu Cầu Kỹ Năng (Phân cách bởi dấu phẩy)
+                  </label>
+                  <input
+                    type="text"
+                    value={formData.requirements}
+                    onChange={(e) => setFormData({ ...formData, requirements: e.target.value })}
                     className="w-full px-3 py-2 border border-slate-200 rounded-xl"
-                  >
-                    {["Intern", "Fresher", "Junior", "Middle", "Senior", "Lead"].map((level) => (
-                      <option key={level} value={level}>{level}</option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-2 gap-3">
-                <div>
-                  <label className="block font-semibold text-slate-700 mb-1">Lương Tối Thiểu (VNĐ)</label>
-                  <input
-                    type="number"
-                    step="1000000"
-                    value={formData.salaryMin}
-                    onChange={(e) => setFormData({ ...formData, salaryMin: e.target.value })}
-                    className="font-mono tabular-nums w-full px-3 py-2 border border-slate-200 rounded-xl"
+                    placeholder="3+ năm Node.js, MongoDB, Docker..."
                   />
                 </div>
 
                 <div>
-                  <label className="block font-semibold text-slate-700 mb-1">Lương Tối Đa (VNĐ)</label>
-                  <input
-                    type="number"
-                    step="1000000"
-                    value={formData.salaryMax}
-                    onChange={(e) => setFormData({ ...formData, salaryMax: e.target.value })}
-                    className="font-mono tabular-nums w-full px-3 py-2 border border-slate-200 rounded-xl"
+                  <label className="block font-semibold text-slate-700 mb-1">Mô Tả Công Việc</label>
+                  <textarea
+                    rows="3"
+                    value={formData.description}
+                    onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                    className="w-full px-3 py-2 border border-slate-200 rounded-xl"
+                    placeholder="Mô tả trách nhiệm chính và quyền lợi..."
                   />
                 </div>
               </div>
 
-              <div>
-                <label className="block font-semibold text-slate-700 mb-1">
-                  Yêu Cầu Kỹ Năng (Phân cách bởi dấu phẩy)
-                </label>
-                <input
-                  type="text"
-                  value={formData.requirements}
-                  onChange={(e) => setFormData({ ...formData, requirements: e.target.value })}
-                  className="w-full px-3 py-2 border border-slate-200 rounded-xl"
-                  placeholder="3+ năm Node.js, MongoDB, Docker..."
-                />
-              </div>
-
-              <div>
-                <label className="block font-semibold text-slate-700 mb-1">Mô Tả Công Việc</label>
-                <textarea
-                  rows="3"
-                  value={formData.description}
-                  onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                  className="w-full px-3 py-2 border border-slate-200 rounded-xl"
-                  placeholder="Mô tả trách nhiệm chính và quyền lợi..."
-                />
-              </div>
-
-              <div className="flex items-center justify-end gap-3 pt-3 border-t border-slate-100">
+              <div className="flex items-center justify-end gap-3 px-6 py-4 border-t border-slate-100 bg-slate-50/50 shrink-0">
                 <button
                   type="button"
                   onClick={() => setIsOpenModal(false)}
-                  className="px-4 py-2 font-semibold text-slate-600 hover:bg-slate-100 rounded-xl"
+                  className="px-4 py-2 font-semibold text-slate-600 hover:bg-slate-100 rounded-xl cursor-pointer"
                 >
                   Hủy
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 font-semibold bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl shadow-xs"
+                  className="px-5 py-2 font-semibold bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl shadow-xs cursor-pointer"
                 >
                   Lưu Vị Trí
                 </button>

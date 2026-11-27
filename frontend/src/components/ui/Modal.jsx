@@ -27,7 +27,6 @@ export const Modal = ({ children, label, onClose, busy = false, className }) => 
     <dialog
       ref={dialogRef}
       aria-label={label}
-      aria-modal="true"
       className="app-dialog fixed inset-0 m-0 h-dvh max-h-none w-screen max-w-none border-0 bg-transparent p-0 text-inherit"
       onKeyDown={(event) => {
         if (event.key !== "Tab") return;
