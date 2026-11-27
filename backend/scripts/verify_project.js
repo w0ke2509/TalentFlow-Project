@@ -587,11 +587,15 @@ async function runApiSuite() {
 
   const hireWithoutOfferReq = await request("PUT", `/api/applications/${quotaApp._id}/status`, { status: "hired" }, adminToken);
   assert(hireWithoutOfferReq.status === 400 && (await Application.findById(quotaApp._id)).status === 'accepted', 'Chưa có đề nghị được ứng viên đồng ý thì không thể tuyển');
-  const invalidOfferReq = await request("PUT", `/api/applications/${quotaApp._id}/status`, { offerSalary: -1, offerStartDate: '2026-11-01', offerAccepted: true }, adminToken);
+  const formatLocalYMD = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+  const offerStartDate = formatLocalYMD(new Date(Date.now() + 7 * 86400000));
+  const pastOfferDate = formatLocalYMD(new Date(Date.now() - 86400000));
+  const invalidOfferReq = await request("PUT", `/api/applications/${quotaApp._id}/status`, { offerSalary: -1, offerStartDate, offerAccepted: true }, adminToken);
   assert(invalidOfferReq.status === 400 && !(await Application.findById(quotaApp._id)).offerAccepted, 'Lương đề nghị không hợp lệ không được lưu');
+  const pastOfferReq = await request("PUT", `/api/applications/${quotaApp._id}/status`, { offerSalary: 25000000, offerStartDate: pastOfferDate, offerAccepted: true }, adminToken);
+  assert(pastOfferReq.status === 400 && !(await Application.findById(quotaApp._id)).offerStartDate, 'Ngày nhận việc trước ngày hiện tại không được lưu');
   const acceptEmptyOfferReq = await request("PUT", `/api/applications/${quotaApp._id}/status`, { offerAccepted: true }, adminToken);
   assert(acceptEmptyOfferReq.status === 400, 'Không thể xác nhận đồng ý khi thiếu lương và ngày nhận việc');
-  const offerStartDate = '2026-11-01';
   const saveOfferReq = await request("PUT", `/api/applications/${quotaApp._id}/status`, {
     offerSalary: 25000000, offerStartDate, offerNote: 'Đã trao đổi trực tiếp', offerAccepted: true
   }, adminToken);
@@ -752,6 +756,13 @@ async function runApiSuite() {
     departmentId: wrongDept._id, positionId: pos._id
   }, adminToken);
   assert(wrongDeptEmployeeReq.status === 400, "Không thể gán nhân viên vào vị trí thuộc phòng ban khác");
+
+  const futureEmpDate = formatLocalYMD(new Date(Date.now() + 2 * 86400000));
+  const futureStartEmployeeReq = await request("POST", "/api/employees", {
+    fullName: "Nhân viên sai ngày nhận việc", email: "future.emp@test.com",
+    departmentId: dept._id, positionId: pos._id, startDate: futureEmpDate
+  }, adminToken);
+  assert(futureStartEmployeeReq.status === 400, "Không thể tạo nhân viên có ngày nhận việc vượt quá ngày hiện tại");
 
   const deleteLinkedDepartmentReq = await request("DELETE", `/api/departments/${dept._id}`, null, adminToken);
   assert(deleteLinkedDepartmentReq.status === 400, "Không thể xóa phòng ban đang có vị trí liên kết");

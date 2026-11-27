@@ -66,9 +66,16 @@ const COLUMNS = [
   }
 ];
 
+const formatLocalDate = (date = new Date()) => {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+};
+
 const defaultInterviewTime = () => {
   const date = new Date(Date.now() + 24 * 60 * 60 * 1000);
-  return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}T${String(date.getHours()).padStart(2, "0")}:${String(date.getMinutes()).padStart(2, "0")}`;
+  return `${formatLocalDate(date)}T${String(date.getHours()).padStart(2, "0")}:${String(date.getMinutes()).padStart(2, "0")}`;
 };
 
 const Applications = ({ onNavigate }) => {
@@ -234,6 +241,11 @@ const Applications = ({ onNavigate }) => {
 
   const handleSaveOffer = async (event) => {
     event.preventDefault();
+    const todayDate = formatLocalDate();
+    if (!offerForm.offerStartDate || offerForm.offerStartDate < todayDate) {
+      toast.error("Ngày nhận việc không được trước ngày hiện tại.");
+      return;
+    }
     setOfferSaving(true);
     try {
       await api.updateApplicationStatus(offerApplication._id, offerForm);
@@ -532,9 +544,12 @@ const Applications = ({ onNavigate }) => {
                   className="font-mono tabular-nums mt-1 w-full px-3 py-2 border border-slate-200 rounded-xl" />
               </label>
               <label className="block font-semibold text-slate-700">Ngày nhận việc *
-                <input type="date" required value={offerForm.offerStartDate}
+                <input type="date" required min={formatLocalDate()} value={offerForm.offerStartDate}
                   onInput={(e) => setOfferForm({ ...offerForm, offerStartDate: e.target.value, offerAccepted: false })}
                   className="font-mono tabular-nums mt-1 w-full px-3 py-2 border border-slate-200 rounded-xl" />
+                <span className="text-[10px] font-normal text-slate-400 block mt-0.5">
+                  * Chỉ được chọn ngày từ hôm nay trở đi
+                </span>
               </label>
               <label className="block font-semibold text-slate-700">Ghi chú đề nghị
                 <textarea value={offerForm.offerNote} onChange={(e) => setOfferForm({ ...offerForm, offerNote: e.target.value })}
